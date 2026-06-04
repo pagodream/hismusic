@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이재훈 고문님이 사랑한 음악 — 드보르작에서 비발디까지</title>
+<meta property="og:title" content="이재훈 고문님이 사랑한 음악">
+<meta property="og:description" content="음악은 멜로디가 아니라 사운드죠. — 故 이재훈. 그가 남긴 말과 음악, 그리고 생각법.">
+<meta name="description" content="故 이재훈 고문님이 사랑한 음악과 그가 남긴 말. 생각법 · 추천곡 · 드보르작 · 장사익 · 빅뱅 · 베토벤 · 비발디.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15110c; --ink-2:#1d1812; --panel:#241d15; --panel-2:#2b2319;
+    --line:rgba(201,162,91,0.22); --line-soft:rgba(201,162,91,0.12);
+    --gold:#c9a25b; --gold-bright:#e2bd76; --gold-deep:#9b7a3f;
+    --cream:#ece1cd; --cream-dim:#c7b89c; --muted:#9a8a6f; --rose:#c98f72;
+    --serif-ko:'Nanum Myeongjo',serif; --serif-la:'Cormorant Garamond',serif; --sans:'Noto Sans KR',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(120% 80% at 50% -10%, rgba(201,162,91,0.16), transparent 55%),radial-gradient(80% 60% at 80% 110%, rgba(201,143,114,0.08), transparent 60%),linear-gradient(180deg,#16120c 0%, #15110c 40%, #120e09 100%)}
+  body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .wrap{position:relative;z-index:2;max-width:760px;margin:0 auto;padding:0 22px 80px}
+
+  header{padding:84px 0 26px;text-align:center}
+  .memorial-tag{font-family:var(--serif-ko);font-size:13px;letter-spacing:.32em;color:var(--gold);opacity:.9;margin-bottom:30px}
+  .ornament{display:flex;align-items:center;justify-content:center;gap:14px;margin:0 auto 28px;max-width:240px}
+  .ornament .l{height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold-deep))}
+  .ornament .r{height:1px;flex:1;background:linear-gradient(90deg,var(--gold-deep),transparent)}
+  .ornament .d{width:7px;height:7px;background:var(--gold);transform:rotate(45deg);box-shadow:0 0 12px rgba(201,162,91,.6)}
+  .latin-title{font-family:var(--serif-la);font-style:italic;font-weight:500;font-size:clamp(20px,5.5vw,30px);color:var(--gold-bright);letter-spacing:.01em;margin-bottom:10px}
+  h1{font-family:var(--serif-ko);font-weight:800;font-size:clamp(30px,8vw,46px);line-height:1.28;color:var(--cream);letter-spacing:-.01em;margin-bottom:18px}
+  h1 .small{display:block;font-size:.5em;font-weight:400;color:var(--cream-dim);letter-spacing:.05em;margin-top:14px}
+  .epigraph{font-family:var(--serif-ko);font-size:clamp(17px,4.4vw,21px);color:var(--gold-bright);line-height:1.6;margin:34px auto 8px;max-width:480px}
+  .epigraph .q{font-family:var(--serif-la);font-size:1.6em;color:var(--gold);vertical-align:-.18em;opacity:.7;margin:0 .08em}
+  .epigraph-by{font-family:var(--serif-ko);font-size:14px;color:var(--muted);letter-spacing:.1em;margin-top:14px;display:block}
+  .intro{font-size:15px;color:var(--cream-dim);line-height:1.95;text-align:center;max-width:560px;margin:42px auto 0;font-weight:300}
+
+  .thought{margin:46px auto 4px;max-width:600px}
+  .thought-intro{font-family:var(--serif-ko);font-size:14.5px;color:var(--cream-dim);text-align:center;line-height:2;margin-bottom:24px}
+  .thought-card{border:1px solid var(--line);border-radius:14px;padding:24px 22px;margin:14px 0;background:linear-gradient(180deg,rgba(201,162,91,0.06),rgba(201,162,91,0.015))}
+  .thought-card h3{font-family:var(--serif-ko);font-size:15px;color:var(--gold-bright);font-weight:700;letter-spacing:.04em;margin-bottom:15px;text-align:center}
+  .thought-card .steps{list-style:none;margin:0 0 14px;padding:0}
+  .thought-card .steps li{font-family:var(--serif-ko);font-size:15px;color:var(--cream);padding:5px 0}
+  .thought-card .num{color:var(--gold);font-family:var(--serif-la);font-size:1.15em;font-style:italic;margin-right:10px}
+  .thought-card p{font-family:var(--serif-ko);font-size:14px;color:var(--cream-dim);line-height:2;margin:0}
+  .thought-by{text-align:center;font-size:12px;color:var(--muted);letter-spacing:.12em;margin-top:14px}
+  .howto-wrap{text-align:center;margin-top:34px}
+  .howto{font-size:13px;color:var(--muted);text-align:center;margin:0 auto;padding:12px 18px;border:1px solid var(--line-soft);border-radius:100px;display:inline-block}
+  .howto b{color:var(--gold);font-weight:500}
+  .modebar{display:flex;justify-content:center;gap:8px;margin-top:18px;flex-wrap:wrap}
+  .mode-btn{font-family:var(--sans);font-size:12.5px;color:var(--cream-dim);background:transparent;border:1px solid var(--line-soft);border-radius:100px;padding:8px 16px;cursor:pointer;transition:all .3s ease;font-weight:300}
+  .mode-btn:hover{border-color:var(--line);color:var(--cream)}
+  .mode-btn.on{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:#14110c;border-color:transparent;font-weight:500;box-shadow:0 2px 10px rgba(201,162,91,.3)}
+
+  .chapters{margin-top:50px}
+  .chapter{border-top:1px solid var(--line-soft);opacity:0;transform:translateY(18px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .chapter:last-child{border-bottom:1px solid var(--line-soft)}
+  .chapter.rec{background:linear-gradient(180deg,rgba(201,162,91,0.07),rgba(201,162,91,0.02));border-top:1px solid var(--line);border-radius:14px;margin-bottom:18px}
+  .ch-head{display:flex;align-items:flex-start;gap:18px;padding:30px 6px;cursor:pointer;position:relative;transition:background .4s ease}
+  .ch-head:hover{background:rgba(201,162,91,0.035)}
+  .chapter.rec .ch-head{padding:26px 16px}
+  .ch-num{font-family:var(--serif-la);font-size:clamp(34px,9vw,50px);font-weight:500;color:var(--gold);opacity:.32;line-height:.9;min-width:54px;transition:opacity .4s ease,text-shadow .4s ease}
+  .chapter.open .ch-num{opacity:.85;text-shadow:0 0 22px rgba(201,162,91,.45)}
+  .chapter.rec .ch-num{opacity:.9;font-size:clamp(26px,7vw,38px)}
+  .ch-body{flex:1;min-width:0}
+  .ch-era{font-family:var(--serif-la);font-style:italic;font-size:14px;color:var(--rose);letter-spacing:.08em;margin-bottom:3px}
+  .ch-latin{font-family:var(--serif-la);font-size:clamp(24px,6.5vw,33px);font-weight:600;color:var(--cream);line-height:1.1;letter-spacing:.01em}
+  .ch-ko{font-family:var(--serif-ko);font-size:16px;color:var(--gold-bright);font-weight:700;margin-top:4px}
+  .ch-quote{font-family:var(--serif-ko);font-size:14.5px;color:var(--cream-dim);line-height:1.75;margin-top:13px;padding-left:14px;border-left:2px solid var(--line)}
+  .ch-note{font-size:12px;color:var(--muted);margin-top:9px;font-weight:300}
+  .ch-meta{display:flex;align-items:center;gap:8px;margin-top:14px}
+  .ch-count{font-size:12px;color:var(--gold);letter-spacing:.1em}
+  .ch-toggle{margin-left:auto;align-self:center;width:30px;height:30px;flex:none;border:1px solid var(--line);border-radius:50%;color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;transition:transform .45s cubic-bezier(.2,.7,.2,1),background .3s}
+  .ch-head:hover .ch-toggle{background:rgba(201,162,91,0.1)}
+  .chapter.open .ch-toggle{transform:rotate(45deg)}
+
+  .tracks{overflow:hidden;max-height:0;transition:max-height .7s cubic-bezier(.3,.8,.2,1)}
+  .tracks-inner{padding:2px 0 28px}
+  .chapter.rec .tracks-inner{padding:2px 8px 26px}
+  .track{display:flex;align-items:flex-start;gap:15px;padding:13px 12px;border-radius:12px;cursor:pointer;transition:background .3s ease;position:relative}
+  .track:hover{background:rgba(201,162,91,0.05)}
+  .track.active{background:rgba(201,162,91,0.08)}
+  .thumb{width:78px;height:52px;flex:none;border-radius:8px;overflow:hidden;position:relative;background:var(--panel);border:1px solid var(--line-soft);margin-top:2px}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block;opacity:.92;transition:opacity .3s,transform .5s}
+  .track:hover .thumb img{opacity:1;transform:scale(1.06)}
+  .thumb .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(20,16,11,.32);transition:background .3s}
+  .track:hover .thumb .play{background:rgba(20,16,11,.12)}
+  .thumb .play svg{width:22px;height:22px;filter:drop-shadow(0 1px 4px rgba(0,0,0,.6))}
+  .t-info{flex:1;min-width:0}
+  .t-title{font-size:14.5px;color:var(--cream);font-weight:400;line-height:1.4}
+  .t-sub{font-size:12px;color:var(--muted);margin-top:3px;font-weight:300}
+  .track.active .t-title{color:var(--gold-bright)}
+  .rec-badge{display:inline-block;font-size:10.5px;font-weight:500;color:#14110c;background:linear-gradient(135deg,var(--gold-bright),var(--gold));padding:1.5px 8px;border-radius:100px;margin-left:8px;letter-spacing:.02em;vertical-align:middle;white-space:nowrap;box-shadow:0 1px 6px rgba(201,162,91,.35)}
+  .voice{font-family:var(--serif-ko);font-size:13px;color:var(--cream-dim);line-height:1.85;margin-top:10px;padding:11px 13px;border-left:2px solid var(--gold-deep);background:rgba(201,162,91,0.05);border-radius:0 8px 8px 0}
+  .voice .v-by{display:block;font-size:11px;color:var(--muted);letter-spacing:.08em;margin-top:7px}
+  .eq{display:none;gap:2px;align-items:flex-end;height:13px;margin-top:7px}
+  .track.active .eq{display:flex}
+  .eq span{width:2.5px;background:var(--gold);border-radius:2px;animation:eq .9s ease-in-out infinite}
+  .eq span:nth-child(2){animation-delay:.25s}.eq span:nth-child(3){animation-delay:.5s}.eq span:nth-child(4){animation-delay:.15s}
+  @keyframes eq{0%,100%{height:3px}50%{height:13px}}
+  .player{padding:6px 12px 4px}
+  .player .frame{position:relative;width:100%;padding-top:56.25%;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 18px 50px rgba(0,0,0,.5)}
+  .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+  footer{margin-top:74px;text-align:center}
+  .foot-quote{font-family:var(--serif-ko);font-size:15px;color:var(--cream-dim);line-height:2;max-width:520px;margin:0 auto}
+  .foot-quote .big{display:block;color:var(--gold-bright);font-size:1.05em;margin-bottom:16px}
+  .foot-orn{margin:38px auto 26px}
+  .foot-name{font-family:var(--serif-ko);font-size:15px;color:var(--cream);letter-spacing:.08em}
+  .foot-date{font-family:var(--serif-la);font-size:13px;color:var(--muted);letter-spacing:.18em;margin-top:8px}
+  .credit{font-size:11px;color:rgba(154,138,111,.6);margin-top:34px;letter-spacing:.04em;line-height:1.8}
+  @media(max-width:520px){.ch-head{gap:13px;padding:26px 2px}.ch-num{min-width:42px}.thumb{width:66px;height:44px}.wrap{padding:0 18px 70px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="memorial-tag">故 이재훈 고문님을 기억하며</div>
+    <div class="ornament"><span class="l"></span><span class="d"></span><span class="r"></span></div>
+    <div class="latin-title">From Dvořák to Vivaldi</div>
+    <h1>이재훈 고문님이<br>사랑한 음악<span class="small">— 그가 남긴 말과 음악 —</span></h1>
+    <p class="epigraph"><span class="q">&ldquo;</span>음악은 멜로디가 아니라 사운드죠.<span class="q">&rdquo;</span><span class="epigraph-by">— 故 이재훈</span></p>
+    <p class="intro">고문님은 음악을 그냥 들려주지 않으셨습니다. 늘 질문과 함께, 그리고 ‘스스로 생각하는 법’과 함께 건네셨죠. 그가 남긴 말을 그대로 옮겨, 곡마다 그의 이야기를 함께 담았습니다.</p>
+  </header>
+
+  <section class="thought">
+    <div class="thought-intro">그가 음악을 건넬 때 늘 함께 남기셨던,<br>스스로 생각하는 법.</div>
+    <div class="thought-card">
+      <h3>기질 훈련시간 · 발상법 · 수평적 사고 훈련</h3>
+      <ul class="steps">
+        <li><span class="num">1</span>모든 정보를 두뇌에 넣는다.</li>
+        <li><span class="num">2</span>뒷 골로 옮겨서 숙성시킨다.</li>
+        <li><span class="num">3</span>일상으로 돌아간다.</li>
+        <li><span class="num">4</span>숙성되면 유레카!</li>
+      </ul>
+      <p>숙성기간이 필요합니다. 잊지만 마시고 두뇌 속에 담가두고, 숙성될 때까지 다른 생각을 하세요. 숙성되면 가라앉고 뜹니다. 도토리묵 담글 때처럼…</p>
+    </div>
+    <div class="thought-card">
+      <h3>수면발상</h3>
+      <p>잠들기 전, 생각을 잠 속으로 끌어들이기 —<br>한번 보시고, 잠 속에서 리플레이 시켜 보시면 답이 보입니다. 꿈 속에서…</p>
+    </div>
+    <div class="thought-by">— 故 이재훈 고문님의 말</div>
+    <div class="howto-wrap"><span class="howto">묶음을 누르면 곡이 펼쳐지고, <b>곡을 누르면 바로 재생</b>됩니다</span></div>
+    <div class="modebar"><button class="mode-btn on" data-mode="one">♪ 한 곡</button><button class="mode-btn" data-mode="folder">⟳ 폴더 반복</button><button class="mode-btn" data-mode="all">⟳ 전체 반복</button></div>
+  </section>
+
+  <main class="chapters" id="chapters"></main>
+
+  <footer>
+    <p class="foot-quote"><span class="big">&ldquo;책을 쓰려고 목차를 만든 지 10년이 됐는데,<br>아직 손을 못 대고 노인이 됐네요.&rdquo;</span>미처 쓰지 못하신 그 책 대신,<br>고문님이 사랑하신 소리와 그가 남긴 말을 여기 모았습니다.<br>이제, 우리가 듣겠습니다.</p>
+    <div class="ornament foot-orn"><span class="l"></span><span class="d"></span><span class="r"></span></div>
+    <div class="foot-name">故 이재훈 고문님</div>
+    <div class="foot-date">2026 · 6 · 1</div>
+    <p class="credit">★ 표시는 고문님이 직접 보내주시거나 들려주고 싶어 하신 곡입니다. 곡 아래 글은 모두 고문님이 남기신 말씀 그대로입니다.<br>모든 곡은 YouTube를 통해 재생됩니다. 드보르작 · 베토벤은 직접 링크를 남기지 않으신 작곡가로, 대표곡으로 담았습니다.</p>
+  </footer>
+</div>
+
+<script>
+const ALBUM = [
+  {
+    isRec:true, num:"★", latin:"In His Own Words", ko:"고문님이 직접 추천하신 곡",
+    quote:"고문님이 직접 링크를 보내주시며, 한 곡 한 곡 풀어 주신 이야기와 함께 담았습니다.",
+    tracks:[
+      {t:"베토벤 9번 ‘합창’ (1만 명 합창)", s:"10,000 Voices · Japan", id:"q72oHQ4T6kQ",
+        voice:"일본에서 오래 전에 전국에서 모인 지역 합창단 1만 명이 베토벤 9번을 불렀죠. 저는 1989년 여름, 오현명 선생과 전국에서 모인 합창단 5천 명이 부르는 베토벤 9번을 가장 가운데 급소에서 들었죠. 아무나 경험해볼 수 없는 멋진 경험입니다. 육성을 들었냐구요? 육성이란 존재하지 않습니다. 마이클 잭슨 공연도, BTS도, 윤시내도… 그 어떤 공연도…"},
+      {t:"Caruso", s:"Luciano Pavarotti", id:"Cp5kF94isS4",
+        voice:"이 음반은 파바로티가 40세 즈음에 녹음 발매한 음반입니다. 저는 저 음반을 사놓고, 진짜 좋은 오디오를 구할 때까지 오픈을 하지 않고 보관하고 있었죠. 그리고 35년쯤 지나서 뱅앤올슨 6000이라는 앰프를 선물받고 음반 비닐을 뜯고 오픈했습니다. 감동이었죠."},
+      {t:"un prince à Venise", s:"Antonio Vivaldi · 앨범", id:"Tntb9DtJ_k4",
+        voice:"카루소가 너무 짧으니 한 곡 더 올릴께요. 윗 질문의 답도 이 음악에 들어 있습니다. 저를 위해 이 세상을 잠깐 다녀가신 비발디 선생입니다."},
+      {t:"La musica notturna delle strade di Madrid", s:"Boccherini · String Quintet", id:"hzNN1Pl_JlA",
+        voice:"3년 전부터, 비발디와 보케리니만 듣습니다."},
+      {t:"40 FINGERS — Guitar Rhapsody (Full Concert)", s:"4대의 기타", id:"hYxNC7dC5oI",
+        voice:"차에서 들으세요. 풀볼륨으로… 차가 흔들릴 정도로… 같은 현악기이지만 기타는 7음계 악기입니다. 이 영상 잘 보세요. 7음계가 무슨 말일까? 고민해 보세요. 문제점도 생각해보시고…"},
+      {t:"The Good, the Bad and the Ugly", s:"The Danish National Symphony Orchestra", id:"enuOArEfqGo",
+        voice:"잠 못 드시는 분들이 많으니 힌트 하나 더 드릴께요. 영화음악 녹음현장 연주입니다. 잘 들으시고 잘 보세요."},
+      {t:"바이올린 협주곡 RV 281", s:"Vivaldi · Original manuscript", id:"CWgQOi7_8mM",
+        voice:"매일 아침 비발디 RV281을 듣습니다. 저는 비발디를 만나고 모든 음악가들과 헤어졌습니다. 심지어 베토벤과도…"},
+      {t:"Williams: Indiana Jones", s:"Sir Simon Rattle · Berliner Philharmoniker", id:"_U519RdznMA",
+        voice:"바이올린이 신비스러운 악기라는 말씀… 절대 동감입니다. 제가 동감하는 이유는 좀 다릅니다만…"},
+      {t:"1492: Conquest of Paradise", s:"Vangelis · 영화 ‘콜럼버스’ 메인 테마", id:"7ufkMTshjz8"},
+      {t:"Chariots of Fire", s:"Vangelis · 영화 ‘불의 전차’ 메인 테마", id:"1eYGl8PNjlU"},
+      {t:"허허바다", s:"장사익", id:"4432OhHZg-k",
+        voice:"허허바다는 좋은 오디오로 들으셔야 진짜를 듣습니다. 비틀즈도… 음악은 멜로디가 아니라 사운드죠."},
+      {t:"거짓말 · 하루하루", s:"BIGBANG", id:"BEEYq3Gttus",
+        voice:"저는 10년 동안 장사익 선생 노래만 듣다가, 2012년 빅뱅의 거짓말과 하루하루를 듣고, 그날부터 10년간 빅뱅만 들으며 K팝을 연구했죠."},
+      {t:"협주곡 RV 237", s:"Vivaldi · per Monsieur Pisendel", id:"BIjRlNhfw6w"},
+      {t:"Vivaldi Storm", s:"2CELLOS", id:"oUBQPIk9Wh8"},
+      {t:"The Phantom of the Opera", s:"Prague Cello Quartet", id:"qpbX7SbXOtU"},
+      {t:"STORM", s:"OTYKEN", id:"CqwrwwOzVcQ"},
+      {t:"Orinoco Flow", s:"Enya", id:"LTrk4X9ACtw"},
+      {t:"오빠는 풍각쟁이", s:"최은진", id:"keJilt974Vw"},
+      {t:"The Girl With April In Her Eyes", s:"Chris de Burgh · 아이들 따라 부르라 추천하신 곡", id:"PqmlAFyrhMg"},
+      {t:"Let It Be", s:"The Beatles", id:"egCy1KoE1Ss"},
+    ]
+  },
+  {
+    num:"I", era:"1994 – 2010", latin:"Dvořák", ko:"드보르작",
+    quote:"&ldquo;1994년부터 2010년까지, 매일 밤 들었죠. 그리고 드보르작과 이별했습니다.&rdquo;",
+    note:"가장 사랑받는 대표곡으로 담았습니다.",
+    tracks:[
+      {t:"교향곡 9번 ‘신세계로부터’ (전곡)", s:"Symphony No.9 ‘From the New World’", id:"iBJe9murOW8"},
+      {t:"신세계 2악장 ‘꿈 속의 고향’ (Largo)", s:"Goin’ Home", id:"iBJe9murOW8", start:589},
+      {t:"어머니가 가르쳐 주신 노래", s:"Songs My Mother Taught Me · 조수미", id:"SwPIayzfIRM"},
+      {t:"첼로 협주곡 나단조", s:"Cello Concerto in B minor · 자클린 뒤 프레", id:"EjP8U1Clx7E"},
+      {t:"슬라브 무곡 (전곡)", s:"Slavonic Dances, Op.46", id:"6iY59c3-cHQ"},
+      {t:"유모레스크", s:"Humoresque · Prague Cello Quartet", id:"vyAUKchY0HM"},
+      {t:"교향곡 8번 (전곡)", s:"Symphony No.8", id:"yfvB5VPNTo8"},
+      {t:"루살카 ‘달에 바치는 노래’", s:"Song to the Moon · Lucia Popp", id:"w42ncbpjzkU"},
+      {t:"현악 4중주 12번 ‘아메리카’ (전곡)", s:"String Quartet No.12 ‘American’", id:"RE978itLig4"},
+      {t:"고요한 숲", s:"Silent Woods", id:"7j2ccODS5-M"},
+    ]
+  },
+  {
+    num:"II", era:"2000 – 2010", latin:"Jang Sa-ik", ko:"장사익",
+    quote:"&ldquo;10년 동안 오직 장사익이었죠. 허허바다는 좋은 오디오로 들으셔야 진짜를 듣습니다.&rdquo;",
+    tracks:[
+      {t:"허허바다", s:"고문님이 가장 아끼신 곡", id:"4432OhHZg-k", rec:true},
+      {t:"찔레꽃", s:"장사익의 대표곡 · KBS 전국투어콘서트", id:"108fd4VGyII"},
+      {t:"꽃구경", s:"어머니의 사랑을 노래한 곡 · 2008", id:"AOO-lcj3A-Y"},
+      {t:"봄날은 간다", s:"KBS 가요무대", id:"sp3gSwWEsbI"},
+      {t:"님은 먼 곳에", s:"뮤지션TV 라이브", id:"KOZFbIGUm40"},
+      {t:"동백 아가씨", s:"KBS 가요무대", id:"2nb_VFcNHIc"},
+      {t:"하늘 가는 길", s:"‘간다 간다 내가 돌아간다’", id:"7ffjYdVnezg"},
+      {t:"찔레꽃 · 동백 아가씨 · 꽃구경", s:"KBS 가요무대 모음", id:"u95OFDHn7mY"},
+      {t:"1집 ‘하늘 가는 길’ (전곡)", s:"1995 데뷔 앨범 · 찔레꽃 · 국밥집에서 외", id:"K8ugqRKYFng"},
+      {t:"장사익 노래 모음", s:"봄날은 간다 · 비 내리는 고모령 · 돌아가는 삼각지 외", id:"hy7JVZj1TUA"},
+    ]
+  },
+  {
+    num:"III", era:"2012 – ", latin:"BIGBANG", ko:"빅뱅",
+    quote:"&ldquo;2012년 빅뱅의 거짓말과 하루하루를 듣고, 그날부터 10년간 빅뱅만 들으며 K팝을 연구했죠. 어떻게 세계를 지배하게 됐는가, 제가 설명할 수 있습니다.&rdquo;",
+    tracks:[
+      {t:"거짓말 · 하루하루", s:"2012년, 그를 사로잡은 그 곡", id:"BEEYq3Gttus", rec:true},
+      {t:"거짓말 (LIES)", s:"BIGBANG · 2007", id:"JyeCVCu3jE4"},
+      {t:"하루하루 (HARU HARU)", s:"BIGBANG · Official M/V", id:"8OAQ6RuYFGE"},
+      {t:"마지막 인사 (LAST FAREWELL)", s:"BIGBANG · Official M/V", id:"ScorpVvqLwo"},
+      {t:"BAE BAE", s:"BIGBANG · Official M/V", id:"TKD03uPVD-Q"},
+      {t:"LOSER", s:"BIGBANG · Official M/V", id:"1CTced9CMMk"},
+      {t:"BANG BANG BANG", s:"BIGBANG · Official M/V", id:"2ips2mM7Zqw"},
+      {t:"FANTASTIC BABY", s:"BIGBANG · Official M/V", id:"AAbokV76tkU"},
+      {t:"봄여름가을겨울 (Still Life)", s:"빅뱅의 마지막 컴백 · ‘아름답던 우리의 봄 여름 가을 겨울’", id:"eN5mG_yMDiM"},
+      {t:"꽃길 (FLOWER ROAD)", s:"‘우리 꽃길만 걷자’", id:"PLE9JIfIK-Q"},
+    ]
+  },
+  {
+    num:"IV", era:"", latin:"Beethoven", ko:"베토벤",
+    quote:"&ldquo;비발디를 만나고, 베토벤과 헤어졌습니다.&rdquo;",
+    note:"가장 사랑받는 대표곡으로 담았습니다. ‘합창’은 고문님이 직접 보내주신 영상입니다.",
+    tracks:[
+      {t:"교향곡 9번 ‘합창’ (1만 명 합창)", s:"고문님이 보내주신 일본 1만 명 합창", id:"q72oHQ4T6kQ", rec:true,
+        voice:"저는 1989년 여름, 오현명 선생과 전국에서 모인 합창단 5천 명이 부르는 베토벤 9번을 가장 가운데 급소에서 들었죠. 아무나 경험해볼 수 없는 멋진 경험입니다."},
+      {t:"환희의 송가 (4악장)", s:"Ode to Joy", id:"e47320SGwlc"},
+      {t:"엘리제를 위하여", s:"Für Elise", id:"6JbKdIW7UwQ"},
+      {t:"월광 소나타 (전악장)", s:"Moonlight Sonata · 임동혁", id:"fexLfIqpo8M"},
+      {t:"비창 소나타", s:"Pathétique · 3악장", id:"ZcI3E9FG7f4"},
+      {t:"열정 소나타 (전악장)", s:"Appassionata · Valentina Lisitsa", id:"0kiAQflFRJs"},
+      {t:"교향곡 5번 ‘운명’", s:"Symphony No.5 · 정명훈", id:"NWWbA5H5pEs"},
+      {t:"교향곡 6번 ‘전원’", s:"Symphony No.6 ‘Pastoral’ · 서울시향", id:"y-6B1z5spOY"},
+      {t:"교향곡 7번 (전악장)", s:"Symphony No.7 · 카라얀 · 베를린필", id:"PKAyq5k4H8A"},
+      {t:"피아노 협주곡 5번 ‘황제’", s:"Emperor · 조성진 · 정명훈", id:"qP9gE8Enxfo"},
+    ]
+  },
+  {
+    num:"V", era:"지금", latin:"Vivaldi", ko:"비발디",
+    quote:"&ldquo;빅뱅이 해체되고, 비발디에 빠져 지냅니다. 제 속에 격정이 있어요. 저를 위해 이 세상을 잠깐 다녀가신 비발디 선생입니다.&rdquo;",
+    tracks:[
+      {t:"바이올린 협주곡 RV 281", s:"고문님이 매일 아침 들으신 곡", id:"CWgQOi7_8mM", rec:true,
+        voice:"매일 아침 비발디 RV281을 듣습니다."},
+      {t:"사계 (전곡)", s:"The Four Seasons", id:"vhUWwjnPe4Y"},
+      {t:"사계 ‘겨울’ 2악장 (Largo)", s:"Winter II · 가장 사랑받는 선율", id:"YrIReN8VAzw"},
+      {t:"협주곡 RV 237", s:"per Monsieur Pisendel", id:"BIjRlNhfw6w", rec:true},
+      {t:"un prince à Venise", s:"Antonio Vivaldi · 앨범", id:"Tntb9DtJ_k4", rec:true},
+      {t:"Vivaldi Storm", s:"2CELLOS", id:"oUBQPIk9Wh8", rec:true},
+      {t:"글로리아 RV 589", s:"Gloria · 리카르도 무티", id:"xlT46NA1D24"},
+      {t:"만돌린 협주곡 RV 425", s:"Mandolin Concerto", id:"-utT-BD0obk"},
+      {t:"Nisi Dominus ‘Cum dederit’", s:"Andreas Scholl", id:"GFoT6UUNLZc"},
+      {t:"조화의 영감 RV 356", s:"L’Estro Armonico", id:"PnYj26TsgOQ"},
+    ]
+  },
+  {
+    num:"VI", era:"Siberia", latin:"OTYKEN", ko:"오티켄 — 시베리아의 소리",
+    quote:"시베리아 추룸족의 목소리와 손으로 만든 악기가 빚어내는, 가장 원초적인 사운드. ‘음악은 멜로디가 아니라 사운드죠’라는 고문님의 말씀에 가장 잘 어울리는, 그가 사랑하신 특별한 음악들입니다.",
+    tracks:[
+      {t:"STORM", s:"고문님이 보내주신 곡", id:"CqwrwwOzVcQ", rec:true},
+      {t:"GENESIS", s:"Official Music Video", id:"SU1apJTv94o"},
+      {t:"LEGEND", s:"Official Music Video", id:"tXLoP9iSU5Y"},
+      {t:"KYKAKACHA", s:"Official Music Video", id:"W7lwVHNkoyw"},
+      {t:"PULSE", s:"Official Live MV", id:"gTdHaerMUeo"},
+      {t:"ALATAU", s:"Official Music Video", id:"rvNeotbRsJs"},
+      {t:"GENESIS (Live)", s:"Official Live MV", id:"PpfPDt73A_c"},
+      {t:"KYKAKACHA (Live)", s:"Official Live MV", id:"odOASEZ549o"},
+    ]
+  }
+];
+
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="rgba(201,162,91,.92)"/><path d="M10 8.5l6 3.5-6 3.5z" fill="#15110c"/></svg>';
+function thumbHTML(id){return '<div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt=""><span class="play">'+PLAY_SVG+'</span></div>';}
+let activeTrack=null, player=null, apiReady=false, pendingTrack=null, playMode='one', allTracks=[];
+const ytTag=document.createElement('script'); ytTag.src='https://www.youtube.com/iframe_api'; document.head.appendChild(ytTag);
+window.onYouTubeIframeAPIReady=function(){apiReady=true; if(pendingTrack){const t=pendingTrack; pendingTrack=null; createPlayer(t);}};
+
+function buildAlbum(){
+  const root=document.getElementById('chapters');
+  ALBUM.forEach((ch,ci)=>{
+    const sec=document.createElement('section');
+    sec.className='chapter'+(ch.isRec?' rec':'');
+    sec.style.animationDelay=(0.08*ci)+'s';
+    let tracksHTML='';
+    ch.tracks.forEach((tr)=>{
+      const badge=tr.rec?'<span class="rec-badge">★ 고문님 추천</span>':'';
+      const voice=tr.voice?'<div class="voice">'+tr.voice+'<span class="v-by">— 故 이재훈 고문님</span></div>':'';
+      tracksHTML+='<div class="track" data-id="'+tr.id+'"'+(tr.start?' data-start="'+tr.start+'"':'')+'>'+
+        '<div class="t-media">'+thumbHTML(tr.id)+'</div>'+
+        '<div class="t-info"><div class="t-title">'+tr.t+badge+'</div><div class="t-sub">'+tr.s+'</div>'+voice+
+        '<div class="eq"><span></span><span></span><span></span><span></span></div></div></div>';
+    });
+    sec.innerHTML='<div class="ch-head"><div class="ch-num">'+ch.num+'</div><div class="ch-body">'+
+      (ch.era?'<div class="ch-era">'+ch.era+'</div>':'')+
+      '<div class="ch-latin">'+ch.latin+'</div><div class="ch-ko">'+ch.ko+'</div>'+
+      '<div class="ch-quote">'+ch.quote+'</div>'+(ch.note?'<div class="ch-note">'+ch.note+'</div>':'')+
+      '<div class="ch-meta"><span class="ch-count">'+ch.tracks.length+'곡</span></div></div>'+
+      '<div class="ch-toggle">+</div></div><div class="tracks"><div class="tracks-inner">'+tracksHTML+'</div></div>';
+    root.appendChild(sec);
+    const head=sec.querySelector('.ch-head');
+    const tracksBox=sec.querySelector('.tracks');
+    head.addEventListener('click',()=>{const o=sec.classList.toggle('open');tracksBox.style.maxHeight=o?(tracksBox.scrollHeight+200)+'px':'0px';});
+    sec.querySelectorAll('.track').forEach(t=>t.addEventListener('click',()=>onTrackClick(t)));
+  });
+  allTracks=Array.from(document.querySelectorAll('.track'));
+  document.querySelectorAll('.mode-btn').forEach(b=>b.addEventListener('click',()=>setMode(b.getAttribute('data-mode'))));
+}
+function setMode(m){playMode=m;document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('on',b.getAttribute('data-mode')===m));}
+function onTrackClick(t){ if(activeTrack===t){stopActive();} else {selectTrack(t);} }
+function selectTrack(trackEl){
+  const chap=trackEl.closest('.chapter');
+  if(!chap.classList.contains('open'))chap.classList.add('open');
+  if(player){try{player.destroy();}catch(e){}player=null;}
+  if(activeTrack&&activeTrack!==trackEl){activeTrack.classList.remove('active');activeTrack.querySelector('.t-media').innerHTML=thumbHTML(activeTrack.getAttribute('data-id'));}
+  const media=trackEl.querySelector('.t-media');
+  media.innerHTML='<div class="player"><div class="frame"><div class="yt-host"></div></div></div>';
+  trackEl.classList.add('active');activeTrack=trackEl;
+  if(apiReady)createPlayer(trackEl); else pendingTrack=trackEl;
+  const tracksBox=chap.querySelector('.tracks');
+  setTimeout(()=>refit(tracksBox),60);
+}
+function createPlayer(trackEl){
+  const host=trackEl.querySelector('.yt-host'); if(!host||typeof YT==='undefined'||!YT.Player)return;
+  const id=trackEl.getAttribute('data-id');
+  const start=parseInt(trackEl.getAttribute('data-start')||'0',10);
+  player=new YT.Player(host,{host:'https://www.youtube-nocookie.com',videoId:id,
+    playerVars:{autoplay:1,rel:0,modestbranding:1,playsinline:1,start:start||0},
+    events:{onReady:function(e){try{e.target.playVideo();}catch(x){}},onStateChange:onState}});
+}
+function onState(e){ if(e.data===YT.PlayerState.ENDED) advance(); }
+function advance(){
+  if(playMode==='one'||!activeTrack)return;
+  const list=playMode==='folder'?Array.from(activeTrack.closest('.tracks-inner').querySelectorAll('.track')):allTracks;
+  const idx=list.indexOf(activeTrack); if(idx<0)return;
+  const next=list[(idx+1)%list.length];
+  if(next){selectTrack(next);setTimeout(()=>next.scrollIntoView({behavior:'smooth',block:'center'}),150);}
+}
+function stopActive(){
+  if(player){try{player.destroy();}catch(e){}player=null;}
+  if(activeTrack){activeTrack.classList.remove('active');activeTrack.querySelector('.t-media').innerHTML=thumbHTML(activeTrack.getAttribute('data-id'));activeTrack=null;}
+}
+function refit(tracksBox){if(tracksBox.closest('.chapter').classList.contains('open'))tracksBox.style.maxHeight=(tracksBox.scrollHeight+220)+'px';}
+buildAlbum();
+window.addEventListener('load',()=>{const f=document.querySelector('.chapter');if(f){setTimeout(()=>f.querySelector('.ch-head').click(),700);}});
+</script>
+</body>
+</html>
