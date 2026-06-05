@@ -101,6 +101,14 @@
   .links-row{margin:0;font-size:13.5px;font-family:var(--sans)}
   .links-row a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;transition:color .3s,border-color .3s}
   .links-row a:hover{color:var(--gold-bright);border-color:var(--gold)}
+  .page-turn{display:flex;align-items:center;justify-content:center;gap:14px;max-width:560px;margin:42px auto 0;padding:18px 24px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,rgba(201,162,91,0.07),rgba(201,162,91,0.015));text-decoration:none;transition:background .35s,border-color .35s}
+  .page-turn:hover{background:rgba(201,162,91,0.13);border-color:var(--gold-deep)}
+  .page-turn .pt-arrow{font-family:var(--serif-la);font-size:27px;color:var(--gold);flex:none;transition:transform .35s}
+  .page-turn.next:hover .pt-arrow{transform:translateX(5px)}
+  .page-turn.prev:hover .pt-arrow{transform:translateX(-5px)}
+  .page-turn .pt-text{display:flex;flex-direction:column;line-height:1.3;text-align:center}
+  .page-turn .pt-label{font-family:var(--serif-ko);font-size:11px;letter-spacing:.24em;color:var(--gold)}
+  .page-turn .pt-title{font-family:var(--serif-ko);font-size:15px;color:var(--cream);margin-top:2px}
   .howto-wrap{text-align:center;margin-top:34px}
   .howto{font-size:13px;color:var(--muted);text-align:center;margin:0 auto;padding:12px 18px;border:1px solid var(--line-soft);border-radius:100px;display:inline-block}
   .howto b{color:var(--gold);font-weight:500}
@@ -272,9 +280,12 @@
     <div class="links-out">
       <p class="links-intro">그의 목소리가 그리울 때, 그가 남긴 자리로.</p>
       <p class="links-row"><a href="https://youtube.com/@studyforce_lab" target="_blank" rel="noopener">언어과학연구소</a> &nbsp;·&nbsp; <a href="https://youtube.com/channel/UCCC3K-S3XU15AfrAgt8Qobw" target="_blank" rel="noopener">마더클럽</a></p>
-      <p class="links-row" style="margin-top:16px"><a href="movie-music-time-travel.html">🎬 아이들과 함께 · 영화로 떠나는 음악 시대 여행 →</a></p>
     </div>
     <div class="maker">이재훈 고문님을 그리워하며, 만든이 <a href="https://www.youtube.com/@pagodream" target="_blank" rel="noopener">파고드림</a></div>
+    <a class="page-turn next" href="https://pagodream.github.io/moviemusic/">
+      <span class="pt-text"><span class="pt-label">다 음 장</span><span class="pt-title">아이들과 함께, 영화로 떠나는 음악 시대 여행</span></span>
+      <span class="pt-arrow">→</span>
+    </a>
   </footer>
 </div>
 
