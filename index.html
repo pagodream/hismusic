@@ -155,6 +155,15 @@
   .rec-badge{display:inline-block;font-size:10.5px;font-weight:500;color:#14110c;background:linear-gradient(135deg,var(--gold-bright),var(--gold));padding:1.5px 8px;border-radius:100px;margin-left:8px;letter-spacing:.02em;vertical-align:middle;white-space:nowrap;box-shadow:0 1px 6px rgba(201,162,91,.35)}
   .voice{font-family:var(--serif-ko);font-size:13px;color:var(--cream-dim);line-height:1.85;margin-top:10px;padding:11px 13px;border-left:2px solid var(--gold-deep);background:rgba(201,162,91,0.05);border-radius:0 8px 8px 0}
   .voice .v-by{display:block;font-size:11px;color:var(--muted);letter-spacing:.08em;margin-top:7px}
+  .voice .spoiler{margin-top:16px;border-top:1px dashed var(--line);padding-top:14px}
+  .voice .spoiler>summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:7px;color:var(--gold-bright);font-family:var(--serif-ko);font-size:13.5px;letter-spacing:.02em;padding:7px 14px;border:1px solid var(--line);border-radius:100px;background:rgba(201,162,91,0.06);transition:background .3s}
+  .voice .spoiler>summary:hover{background:rgba(201,162,91,0.13)}
+  .voice .spoiler>summary::-webkit-details-marker{display:none}
+  .voice .spoiler>summary::before{content:"🔒";font-size:12px}
+  .voice .spoiler[open]>summary{margin-bottom:12px}
+  .voice .spoiler[open]>summary::before{content:"🔓"}
+  .voice .spoiler .ans{font-family:var(--serif-ko);font-size:13px;color:var(--cream-dim);line-height:1.9}
+  .voice .spoiler .ans .reveal{display:block;font-family:var(--serif-la);font-style:italic;font-size:17px;color:var(--gold-bright);margin:2px 0 4px}
   .eq{display:none;gap:2px;align-items:flex-end;height:13px;margin-top:7px}
   .track.active .eq{display:flex}
   .eq span{width:2.5px;background:var(--gold);border-radius:2px;animation:eq .9s ease-in-out infinite}
@@ -331,7 +340,7 @@ const ALBUM = [
     note:"콩쿠르 대상을 받던 날, 한 독일 노인이 스치듯 던진 한 마디 때문이었습니다. 고문님이 ‘내일까지 생각해보라’며 들려주신 이야기. 펼쳐서 끝까지 읽어보세요.",
     tracks:[
       {t:"교향곡 40번 g단조 (Symphony No. 40)", s:"Mozart · Berliner Philharmoniker · Herbert von Karajan", id:"9nYirSCbGqw",
-        voice:"금누리 선생의 형님, 지휘자 금난새. 그는 유럽에서 촉망받던 라이징 스타였습니다. 그런데 어느 날 그 모든 것을 내려놓고 한국으로 돌아와, 수원시향의 지휘봉을 잡고 ‘음악 계몽가’의 길을 걸으셨죠. 대체 무슨 일이 있었던 걸까요?<br><br>에피소드가 하나 있습니다. 어느 콩쿠르에서 대상을 받으시고, 로비 애프터 파티에서 모두의 축하를 받고 계실 때였죠. 한 독일 노인이 스치듯 지나가며 딱 한 마디를 던졌습니다. 그 말을 듣고 그는 큰 깨달음을 얻어, 짐을 싸서 돌아오셨습니다.<br><br>그 한 마디는 이것이었습니다. ‘그건 모차르트가 아니야.’<br><br>독일 판소리 대회 우승자에게 전라도 노인이 ‘그건 판소리가 아니야’라고 말하는 것과 같죠. 우리는 모차르트를 ‘진짜로’ 연주하는 데 한계가 있습니다. 뼈내림이 없으니까요. 비엔나 뒷골목의 기억이 우리에겐 없고, 우중충한 유럽의 낮은 하늘이 우리에겐 없습니다. 우리는 모차르트에도 베토벤에도 완벽히 빙의될 수 없습니다.<br><br>그래서 금난새는 그 깨달음으로, 오르지 못할 나무에 연연하기를 그만두고 클래식 계몽가가 되셨습니다. 저는 그것이 고수의 선택이라 느낍니다. 독일인이 판소리를 한들 어디까지 하겠습니까. 우리가 요들을 부른들 그것이 요들이겠습니까. 최고가 될 수 없는 분야에 매달리기보다, 최고가 될 수 있는 새 길을 여는 것. 큰 깨달음, 대오(大悟)였죠.<br><br>한 회원이 이렇게 헤아렸습니다. ‘백남준은 한계를 넘기 어려우셨고, 금난새는 한계를 넘으려는 노력이 헛됨을 깨달으신 것 아닐까요.’ 깊은 읽기였습니다.<br><br>유럽의 세계문학, 앙드레 지드도 서머싯 몸도 우리에게 더러 재미없게 느껴지는 이유가 같습니다. 우리는 그 소설 속으로 온전히 들어갈 수 없으니까요. 그러니 클래식에, 와인에 문화적 열등감을 가질 필요가 없습니다. 지금은 K컬처가 대세입니다.<br><br>우리는 오랫동안 사대주의를 강요받으며 살아왔습니다. 제 누이 시절엔 여고 3학년 생활관에서 양식 먹는 예절을 배웠죠. 포크는 왼손, 나이프는 오른손. 레스토랑 맞선 예행연습이었습니다. 슬픈 이야기죠. 처음 보는 음식이 나오면 ‘이건 어떻게 먹는 거예요? 저는 처음 먹어봐서요’ 하고 물으면 될 것을요.<br><br>글에는 주제가 있습니다. 직관만큼만 읽으면 글쓴이의 중심 생각을 놓치게 되죠. 그 중심을 끝까지 따라가 읽어내는 힘, 그것이 독해력입니다."}
+        voice:"금누리 선생의 형님, 지휘자 금난새. 그는 유럽에서 촉망받던 라이징 스타였습니다. 그런데 어느 날 그 모든 것을 내려놓고 한국으로 돌아와, 수원시향의 지휘봉을 잡고 ‘음악 계몽가’의 길을 걸으셨죠. 젊음을 다 바쳐 쌓아온 명예와 미래를 한순간에 버리셨다는 건, 그만큼 큰 깨달음이 있었다는 뜻입니다. 대체 무슨 일이 있었던 걸까요?<br><br>에피소드가 하나 있습니다. 어느 콩쿠르에서 대상을 받으시고, 로비 애프터 파티에서 모두의 축하를 받고 계실 때였죠. 한 독일 노인이 스치듯 지나가며 딱 한 마디를 던졌습니다. 그 말을 듣고 그는 큰 깨달음을 얻어, 그길로 짐을 싸서 돌아오셨습니다.<br><br>그 독일 노인은, 뭐라고 했을까요? 딱 한 마디였습니다.<br><br>고문님은 끝내 그 답을 가르쳐주지 않으셨습니다. 우리는 그 한 마디를 일주일이 넘도록 찾아 헤맸죠. ‘내일까지 생각해보세요. 그 로비 애프터 파티 현장을 머릿속에 그리면서.’ 스무고개처럼, 곱씹고 또 곱씹게 하셨습니다.<br><br>당신도 한번 상상해 보세요. 화려한 축하의 한가운데를 스쳐 간, 한 노인의 짧은 말 한마디. 한 회원은 이렇게 다가갔습니다. ‘백남준은 한계를 넘기 어려우셨고, 금난새는 한계를 넘으려는 노력이 헛됨을 깨달으신 것 아닐까요.’ 깊은 읽기였습니다.<br><br>충분히 곱씹으셨나요? 그렇다면 이제, 고문님의 답을 펼쳐 보세요.<details class='spoiler'><summary>고문님의 답 펼쳐보기</summary><div class='ans'>그 한 마디는 이것이었습니다.<br><br><span class='reveal'>‘그건 모차르트가 아니야.’</span><br><br>독일 판소리 대회 우승자에게 전라도 노인이 ‘그건 판소리가 아니야’라고 말하는 것과 같죠. 우리는 모차르트를 ‘진짜로’ 연주하는 데 한계가 있습니다. 뼈내림이 없으니까요. 비엔나 뒷골목의 기억이 우리에겐 없고, 우중충한 유럽의 낮은 하늘이 우리에겐 없습니다. 우리는 모차르트에도 베토벤에도 완벽히 빙의될 수 없습니다.<br><br>그래서 금난새는 그 깨달음으로, 오르지 못할 나무에 연연하기를 그만두고 클래식 계몽가가 되셨습니다. 저는 그것이 고수의 선택이라 느낍니다. 독일인이 판소리를 한들 어디까지 하겠습니까. 우리가 요들을 부른들 그것이 요들이겠습니까. 최고가 될 수 없는 분야에 매달리기보다, 최고가 될 수 있는 새 길을 여는 것. 큰 깨달음, 대오(大悟)였죠.<br><br>유럽의 세계문학, 앙드레 지드도 서머싯 몸도 우리에게 더러 재미없게 느껴지는 이유가 같습니다. 우리는 그 소설 속으로 온전히 들어갈 수 없으니까요. 그러니 클래식에, 와인에 문화적 열등감을 가질 필요가 없습니다. 지금은 K컬처가 대세입니다.<br><br>우리는 오랫동안 사대주의를 강요받으며 살아왔습니다. 제 누이 시절엔 여고 3학년 생활관에서 양식 먹는 예절을 배웠죠. 포크는 왼손, 나이프는 오른손. 레스토랑 맞선 예행연습이었습니다. 슬픈 이야기죠. 처음 보는 음식이 나오면 ‘이건 어떻게 먹는 거예요? 저는 처음 먹어봐서요’ 하고 물으면 될 것을요.<br><br>글에는 주제가 있습니다. 직관만큼만 읽으면 글쓴이의 중심 생각을 놓치게 되죠. 그 중심을 끝까지 따라가 읽어내는 힘, 그것이 독해력입니다.</div></details>"}
     ]
   },
   {
