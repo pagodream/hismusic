@@ -30,7 +30,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative}
+  body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;word-break:keep-all}
   body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
     background:radial-gradient(120% 80% at 50% -10%, rgba(201,162,91,0.16), transparent 55%),radial-gradient(80% 60% at 80% 110%, rgba(201,143,114,0.08), transparent 60%),linear-gradient(180deg,#16120c 0%, #15110c 40%, #120e09 100%)}
   body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.035;
@@ -49,7 +49,9 @@
   .epigraph{font-family:var(--serif-ko);font-size:clamp(17px,4.4vw,21px);color:var(--gold-bright);line-height:1.6;margin:34px auto 8px;max-width:480px}
   .epigraph .q{font-family:var(--serif-la);font-size:1.6em;color:var(--gold);vertical-align:-.18em;opacity:.7;margin:0 .08em}
   .epigraph-by{font-family:var(--serif-ko);font-size:14px;color:var(--muted);letter-spacing:.1em;margin-top:14px;display:block}
-  .intro{font-size:15px;color:var(--cream-dim);line-height:1.95;text-align:center;max-width:560px;margin:42px auto 0;font-weight:300}
+  .intro{font-size:15px;color:var(--cream-dim);line-height:1.95;text-align:center;max-width:560px;margin:42px auto 0;font-weight:300;text-wrap:pretty}
+  .epigraph,.thought-intro,.ded-h,.foot-quote .big,.pt-title,h1 .small{text-wrap:balance}
+  .tribute-body p,.ded-body p,.thought-card p,.ch-history,.ch-quote,.voice{text-wrap:pretty}
 
   .thought{margin:46px auto 4px;max-width:600px}
   .thought-intro{font-family:var(--serif-ko);font-size:14.5px;color:var(--cream-dim);text-align:center;line-height:2;margin-bottom:24px}
