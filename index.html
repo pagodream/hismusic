@@ -69,6 +69,30 @@
   .tribute-body a:hover{color:var(--gold-bright);border-color:var(--gold)}
   .tribute-close{font-family:var(--serif-ko);color:var(--cream)!important;text-align:center;font-size:16px!important;margin-top:26px!important}
   .tribute-sign{text-align:right;font-family:var(--serif-ko);font-size:13px;color:var(--muted);margin-top:10px;letter-spacing:.04em}
+  .dedication{margin:30px 0 6px;padding:34px 20px 30px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,rgba(201,162,91,0.07),rgba(201,162,91,0.015));text-align:center}
+  .ded-orn{margin:0 auto 18px}
+  .ded-tag{font-family:var(--serif-ko);font-size:13px;letter-spacing:.2em;color:var(--gold);margin-bottom:10px}
+  .ded-h{font-family:var(--serif-la);font-size:clamp(28px,7vw,38px);font-weight:600;color:var(--gold-bright);letter-spacing:.02em;margin-bottom:22px}
+  .ded-body{text-align:left;max-width:600px;margin:0 auto}
+  .ded-body p{font-family:var(--serif-ko);font-size:15px;color:var(--cream-dim);line-height:1.95;margin-bottom:14px}
+  .ded-videos{display:grid;grid-template-columns:1fr;gap:24px;margin:30px auto 0;max-width:620px}
+  @media(min-width:640px){.ded-videos{grid-template-columns:1fr 1fr}}
+  .ded-video{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;cursor:pointer;background-size:cover;background-position:center;border:1px solid var(--line);box-shadow:0 10px 32px rgba(0,0,0,.45)}
+  .ded-video::after{content:"";position:absolute;inset:0;background:rgba(20,16,11,.42);transition:background .35s}
+  .ded-video:hover::after{background:rgba(20,16,11,.18)}
+  .ded-video.playing{cursor:default}
+  .ded-video.playing::after{display:none}
+  .ded-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:62px;height:62px;border-radius:50%;background:rgba(226,189,118,.92);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--ink);padding-left:4px;box-shadow:0 4px 20px rgba(0,0,0,.5);transition:background .3s,transform .3s}
+  .ded-video:hover .ded-play{background:var(--gold-bright);transform:translate(-50%,-50%) scale(1.07)}
+  .ded-video.playing .ded-play{display:none}
+  .ded-cap{font-family:var(--serif-ko);font-size:12.5px;color:var(--cream-dim);margin-top:11px;line-height:1.55}
+  .ded-close{font-family:var(--serif-ko);font-size:15px;color:var(--cream);margin-top:28px;letter-spacing:.02em}
+  .caeum{max-width:600px;margin:48px auto 0;padding:0 6px}
+  .caeum-h{font-family:var(--serif-ko);font-size:clamp(18px,4.6vw,22px);color:var(--gold-bright);text-align:center;font-weight:700;letter-spacing:.02em;margin:0 0 22px}
+  .caeum-quote{border-left:2px solid var(--gold-deep,#8a6c34);padding:3px 0 3px 18px;margin:0 0 18px}
+  .caeum-quote p{font-family:var(--serif-ko);font-size:15px;color:var(--cream);line-height:1.95;margin:0 0 8px}
+  .caeum-by{font-family:var(--serif-ko);font-size:12.5px;color:var(--muted);letter-spacing:.04em}
+  .caeum-note{font-family:var(--serif-ko);font-size:14.5px;color:var(--cream-dim);line-height:2.05;margin:0}
   .maker{margin-top:24px;font-size:12px;color:var(--muted);letter-spacing:.05em}
   .maker a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line-soft);transition:color .3s}
   .maker a:hover{color:var(--gold-bright)}
@@ -102,6 +126,10 @@
   .ch-ko{font-family:var(--serif-ko);font-size:16px;color:var(--gold-bright);font-weight:700;margin-top:4px}
   .ch-quote{font-family:var(--serif-ko);font-size:14.5px;color:var(--cream-dim);line-height:1.75;margin-top:13px;padding-left:14px;border-left:2px solid var(--line)}
   .ch-note{font-size:12px;color:var(--muted);margin-top:9px;font-weight:300}
+  .ch-story{font-family:var(--serif-ko);font-size:14.5px;color:var(--cream-dim);line-height:1.95;padding:8px 4px 20px}
+  .ch-story p{margin-bottom:14px}
+  .ch-story p:last-child{margin-bottom:4px}
+  .ch-story .punch{color:var(--gold-bright);font-weight:700;font-size:17px;letter-spacing:.01em}
   .ch-meta{display:flex;align-items:center;gap:8px;margin-top:14px}
   .ch-count{font-size:12px;color:var(--gold);letter-spacing:.1em}
   .ch-toggle{margin-left:auto;align-self:center;width:30px;height:30px;flex:none;border:1px solid var(--line);border-radius:50%;color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;transition:transform .45s cubic-bezier(.2,.7,.2,1),background .3s}
@@ -187,6 +215,28 @@
     <div class="tribute-sign">— 마더클럽 일동</div>
   </section>
 
+  <section class="dedication">
+    <div class="ornament ded-orn"><span class="l"></span><span class="d"></span><span class="r"></span></div>
+    <div class="ded-tag">마더클럽이 고문님께 드리는 헌정곡</div>
+    <h2 class="ded-h">마이 웨이 · My Way</h2>
+    <div class="ded-body">
+      <p>지난해 스승의 날, 마더클럽은 고문님께 노래 한 곡을 바쳤습니다. 프랭크 시내트라의 ‘마이 웨이’. 그 노래를 고르던 날, 우리 마음에 깊이 새겨진 한 장면이 있었습니다.</p>
+      <p>2014년, ‘한국 바이올린의 대모’ 故 김남윤 선생님의 정년퇴임 음악회. 모든 연주가 끝난 무대 뒤편으로 제자 백여 명이 조용히 모여 앉아, 선생님을 위해 ‘마이 웨이’를 연주하기 시작했습니다. 영문을 몰라 잠시 어리둥절하시던 선생님은, 끝내 객석을 등지고 서서 손수건으로 눈물을 닦으셨죠.</p>
+      <p>스승을 향한 그 마음이, 꼭 우리 같았습니다. 그래서 우리는 그 노래를 고문님께 드렸습니다. 그리고 이제, 떠나신 고문님께 그 마음 그대로 다시 올립니다. 당신께 배운 그대로, 우리도 우리의 길을 걷겠습니다.</p>
+    </div>
+    <div class="ded-videos">
+      <div>
+        <div class="ded-video" data-id="EbR7h6dWyZ8" onclick="playDed(this)" style="background-image:url('https://i.ytimg.com/vi/EbR7h6dWyZ8/hqdefault.jpg')"><span class="ded-play">▶</span></div>
+        <div class="ded-cap">故 김남윤 선생님의 연주<br>브루흐 ‘스코틀랜드 환상곡’ · 2014 정년퇴임 음악회</div>
+      </div>
+      <div>
+        <div class="ded-video" data-id="TRgDc6LwYco" onclick="playDed(this)" style="background-image:url('https://i.ytimg.com/vi/TRgDc6LwYco/hqdefault.jpg')"><span class="ded-play">▶</span></div>
+        <div class="ded-cap">제자들이 바친 깜짝 앙코르<br>‘마이 웨이’ · 그날의 무대</div>
+      </div>
+    </div>
+    <div class="ded-close">이 무대를 빌려, 마더클럽이 고문님께 마지막 앙코르를 올립니다.</div>
+  </section>
+
   <section class="thought">
     <div class="thought-intro">그가 음악을 건넬 때 늘 함께 남기셨던,<br>‘어떻게 들어야 하는가’.</div>
     <div class="thought-card">
@@ -213,6 +263,7 @@
     <div class="links-out">
       <p class="links-intro">그의 목소리가 그리울 때, 그가 남긴 자리로.</p>
       <p class="links-row"><a href="https://youtube.com/@studyforce_lab" target="_blank" rel="noopener">언어과학연구소</a> &nbsp;·&nbsp; <a href="https://youtube.com/channel/UCCC3K-S3XU15AfrAgt8Qobw" target="_blank" rel="noopener">마더클럽</a></p>
+      <p class="links-row" style="margin-top:16px"><a href="movie-music-time-travel.html">🎬 아이들과 함께 · 영화로 떠나는 음악 시대 여행 →</a></p>
     </div>
     <div class="maker">이재훈 고문님을 그리워하며, 만든이 <a href="https://www.youtube.com/@pagodream" target="_blank" rel="noopener">파고드림</a></div>
   </footer>
@@ -230,8 +281,8 @@ const ALBUM = [
         voice:"이 음반은 파바로티가 40세 즈음에 녹음 발매한 음반입니다. 저는 저 음반을 사놓고, 진짜 좋은 오디오를 구할 때까지 오픈을 하지 않고 보관하고 있었죠. 그리고 35년쯤 지나서 뱅앤올슨 6000이라는 앰프를 선물받고 음반 비닐을 뜯고 오픈했습니다. 감동이었죠."},
       {t:"un prince à Venise", s:"Antonio Vivaldi · 앨범", id:"Tntb9DtJ_k4",
         voice:"카루소가 너무 짧으니 한 곡 더 올릴께요. 윗 질문의 답도 이 음악에 들어 있습니다. 저를 위해 이 세상을 잠깐 다녀가신 비발디 선생입니다."},
-      {t:"La musica notturna delle strade di Madrid", s:"Boccherini · String Quintet", id:"hzNN1Pl_JlA",
-        voice:"3년 전부터, 비발디와 보케리니만 듣습니다."},
+      {t:"La musica notturna delle strade di Madrid", s:"Boccherini · 영화 ‘마스터 앤드 커맨더’ OST (Richard Tognetti)", id:"hzNN1Pl_JlA",
+        voice:"3년 전부터, 비발디와 보케리니만 듣습니다.<br><br>이 영화 ‘마스터 앤드 커맨더’도 아이들에게 꼭 보게 하세요. 그리고 이 마드리드 야상곡을 들으며, 머릿속에 어떤 그림이 그려지는지 느껴 보세요."},
       {t:"40 FINGERS — Guitar Rhapsody (Full Concert)", s:"4대의 기타", id:"hYxNC7dC5oI",
         voice:"차에서 들으세요. 풀볼륨으로… 차가 흔들릴 정도로… 같은 현악기이지만 기타는 7음계 악기입니다. 이 영상 잘 보세요. 7음계가 무슨 말일까? 고민해 보세요. 문제점도 생각해보시고…"},
       {t:"The Good, the Bad and the Ugly", s:"The Danish National Symphony Orchestra", id:"enuOArEfqGo",
@@ -261,6 +312,26 @@ const ALBUM = [
       {t:"The Girl With April In Her Eyes", s:"Chris de Burgh · 아이들 따라 부르라 추천하신 곡 (가사 한글 번역)", id:"Us9xUQiOyPE",
         voice:"가사 한글 번역과 함께 들어보세요. 영어가 ‘해석되는 언어’가 아니라는 걸 깨닫게 됩니다. 영어는 한국어로 온전히 옮겨지지 않고, 한국어도 영어로 옮겨지지 않으니까요."},
       {t:"Let It Be", s:"The Beatles", id:"egCy1KoE1Ss"},
+    ]
+  },
+  {
+    num:"♪", era:"採音", latin:"Sound Capture", ko:"채음 · 소리를 담아내는 일",
+    quote:"&ldquo;소리를 어떻게 담아내는가, 그것이 채음입니다.&rdquo;",
+    note:"채음은 ‘소리를 거두어 담는 일’입니다. 같은 연주라도 어떤 마이크로, 어떤 공간에서, 어떻게 녹음하고 다듬느냐에 따라 전혀 다른 음악이 됩니다. 좋은 채음은 멜로디뿐 아니라 활이 현을 스치는 결, 연주가 숨 쉬는 공기, 그 자리의 공간감까지 담아냅니다.<br><br>고문님이 ‘음악은 멜로디가 아니라 사운드’라고 하신 까닭이 여기 있습니다. 아래 두 곡은 고문님이 ‘채음이 잘 됐다’고 꼽으신 녹음입니다. 헤드폰으로 들어보세요.",
+    tracks:[
+      {t:"환딩고 (Fandango)", s:"Boccherini · 채음 잘된 녹음", id:"tAAoHrTf_w8",
+        voice:"고문님이 좋아하신, 채음이 잘된 보케리니의 환딩고입니다. 소리가 얼마나 또렷하고 생생하게 담겼는지 들어보세요."},
+      {t:"The Storm (비발디 스톰)", s:"수음 좋은 녹음", id:"ECZQUg6-TlU",
+        voice:"수음이 좋은 비발디 스톰입니다. 같은 곡이라도 소리를 어떻게 담아내느냐에 따라 이렇게 달라집니다. 채음의 좋은 예죠."},
+    ]
+  },
+  {
+    num:"話", era:"고문님의 이야기", latin:"Why the Conductor Came Home", ko:"금난새, 그리고 ‘그건 모차르트가 아니야’",
+    quote:"&ldquo;유럽의 라이징 스타였던 지휘자 금난새는, 왜 모든 걸 버리고 한국으로 돌아왔을까요?&rdquo;",
+    note:"콩쿠르 대상을 받던 날, 한 독일 노인이 스치듯 던진 한 마디 때문이었습니다. 고문님이 ‘내일까지 생각해보라’며 들려주신 이야기. 펼쳐서 끝까지 읽어보세요.",
+    tracks:[
+      {t:"교향곡 40번 g단조 (Symphony No. 40)", s:"Mozart · Berliner Philharmoniker · Herbert von Karajan", id:"9nYirSCbGqw",
+        voice:"금누리 선생의 형님, 지휘자 금난새. 그는 유럽에서 촉망받던 라이징 스타였습니다. 그런데 어느 날 그 모든 것을 내려놓고 한국으로 돌아와, 수원시향의 지휘봉을 잡고 ‘음악 계몽가’의 길을 걸으셨죠. 대체 무슨 일이 있었던 걸까요?<br><br>에피소드가 하나 있습니다. 어느 콩쿠르에서 대상을 받으시고, 로비 애프터 파티에서 모두의 축하를 받고 계실 때였죠. 한 독일 노인이 스치듯 지나가며 딱 한 마디를 던졌습니다. 그 말을 듣고 그는 큰 깨달음을 얻어, 짐을 싸서 돌아오셨습니다.<br><br>그 한 마디는 이것이었습니다. ‘그건 모차르트가 아니야.’<br><br>독일 판소리 대회 우승자에게 전라도 노인이 ‘그건 판소리가 아니야’라고 말하는 것과 같죠. 우리는 모차르트를 ‘진짜로’ 연주하는 데 한계가 있습니다. 뼈내림이 없으니까요. 비엔나 뒷골목의 기억이 우리에겐 없고, 우중충한 유럽의 낮은 하늘이 우리에겐 없습니다. 우리는 모차르트에도 베토벤에도 완벽히 빙의될 수 없습니다.<br><br>그래서 금난새는 그 깨달음으로, 오르지 못할 나무에 연연하기를 그만두고 클래식 계몽가가 되셨습니다. 저는 그것이 고수의 선택이라 느낍니다. 독일인이 판소리를 한들 어디까지 하겠습니까. 우리가 요들을 부른들 그것이 요들이겠습니까. 최고가 될 수 없는 분야에 매달리기보다, 최고가 될 수 있는 새 길을 여는 것. 큰 깨달음, 대오(大悟)였죠.<br><br>한 회원이 이렇게 헤아렸습니다. ‘백남준은 한계를 넘기 어려우셨고, 금난새는 한계를 넘으려는 노력이 헛됨을 깨달으신 것 아닐까요.’ 깊은 읽기였습니다.<br><br>유럽의 세계문학, 앙드레 지드도 서머싯 몸도 우리에게 더러 재미없게 느껴지는 이유가 같습니다. 우리는 그 소설 속으로 온전히 들어갈 수 없으니까요. 그러니 클래식에, 와인에 문화적 열등감을 가질 필요가 없습니다. 지금은 K컬처가 대세입니다.<br><br>우리는 오랫동안 사대주의를 강요받으며 살아왔습니다. 제 누이 시절엔 여고 3학년 생활관에서 양식 먹는 예절을 배웠죠. 포크는 왼손, 나이프는 오른손. 레스토랑 맞선 예행연습이었습니다. 슬픈 이야기죠. 처음 보는 음식이 나오면 ‘이건 어떻게 먹는 거예요? 저는 처음 먹어봐서요’ 하고 물으면 될 것을요.<br><br>글에는 주제가 있습니다. 직관만큼만 읽으면 글쓴이의 중심 생각을 놓치게 되죠. 그 중심을 끝까지 따라가 읽어내는 힘, 그것이 독해력입니다."}
     ]
   },
   {
@@ -369,6 +440,7 @@ const ALBUM = [
 const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="rgba(201,162,91,.92)"/><path d="M10 8.5l6 3.5-6 3.5z" fill="#15110c"/></svg>';
 function thumbHTML(id){return '<div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt=""><span class="play">'+PLAY_SVG+'</span></div>';}
 let activeTrack=null, player=null, apiReady=false, pendingTrack=null, playMode='one', allTracks=[], progTimer=null, repeatOne=false;
+function playDed(el){try{if(player&&player.pauseVideo)player.pauseVideo();}catch(e){}var id=el.getAttribute('data-id');el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1" title="헌정 영상" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>';el.classList.add('playing');}
 const ytTag=document.createElement('script'); ytTag.src='https://www.youtube.com/iframe_api'; document.head.appendChild(ytTag);
 window.onYouTubeIframeAPIReady=function(){apiReady=true; if(pendingTrack){const t=pendingTrack; pendingTrack=null; createPlayer(t);}};
 
@@ -393,7 +465,7 @@ function buildAlbum(){
       '<div class="ch-latin">'+ch.latin+'</div><div class="ch-ko">'+ch.ko+'</div>'+
       '<div class="ch-quote">'+ch.quote+'</div>'+(ch.note?'<div class="ch-note">'+ch.note+'</div>':'')+
       '<div class="ch-meta"><span class="ch-count">'+ch.tracks.length+'곡</span></div></div>'+
-      '<div class="ch-toggle">+</div></div><div class="tracks"><div class="tracks-inner">'+tracksHTML+'</div></div>';
+      '<div class="ch-toggle">+</div></div><div class="tracks"><div class="tracks-inner">'+(ch.story?'<div class="ch-story">'+ch.story+'</div>':'')+tracksHTML+'</div></div>';
     root.appendChild(sec);
     const head=sec.querySelector('.ch-head');
     const tracksBox=sec.querySelector('.tracks');
