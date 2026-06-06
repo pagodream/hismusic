@@ -244,6 +244,23 @@
     .gb-pager button:disabled{opacity:.35;cursor:default}
     .gb-pginfo{font-size:.82rem;color:var(--muted);min-width:64px;text-align:center}
     @media(max-width:520px){.remember{padding:48px 16px 8px}.rmb-head{font-size:1.3rem}}
+  
+    /* 마이 웨이 서사 접기/펼치기 */
+    .ded-toggle{display:block;margin:8px auto 0;background:none;border:1px solid var(--line);color:var(--gold);font-family:var(--sans);font-size:.84rem;border-radius:999px;padding:7px 18px;cursor:pointer;transition:background .2s,color .2s}
+    .ded-toggle:hover{background:rgba(201,162,91,0.10);color:var(--gold-bright)}
+    .ded-collapsible{max-height:0;overflow:hidden;opacity:0;transition:max-height .55s ease,opacity .4s ease}
+    .ded-collapsible.open{max-height:2000px;opacity:1}
+  
+    /* 닉네임 입력 · 방명록 닉네임 · 글 남기기 플로팅 버튼 */
+    .rmb-nick{width:100%;box-sizing:border-box;background:rgba(0,0,0,0.18);border:1px solid var(--line);border-radius:10px;color:var(--cream);font-family:var(--sans);font-size:.9rem;padding:11px 14px;margin-bottom:10px}
+    .rmb-nick:focus{outline:none;border-color:var(--gold-deep)}
+    .rmb-nick::placeholder{color:var(--muted)}
+    .gb-nick{color:var(--gold-bright);font-weight:600}
+    .fab-write{position:fixed;right:18px;bottom:20px;z-index:60;display:inline-flex;align-items:center;gap:6px;background:linear-gradient(180deg,var(--gold-bright),var(--gold));color:var(--ink);font-family:var(--sans);font-weight:700;font-size:.9rem;text-decoration:none;padding:12px 20px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,0.4),0 2px 8px rgba(201,162,91,0.35);transition:opacity .35s,transform .2s,visibility .35s}
+    .fab-write:hover{transform:translateY(-2px)}
+    .fab-write.hide{opacity:0;visibility:hidden;pointer-events:none}
+    html{scroll-behavior:smooth}
+    @media(max-width:520px){.fab-write{right:12px;bottom:14px;font-size:.84rem;padding:11px 16px}}
   </style>
 </head>
 <body>
@@ -280,6 +297,8 @@
     <div class="ornament ded-orn"><span class="l"></span><span class="d"></span><span class="r"></span></div>
     <div class="ded-tag">마더클럽이 고문님께 드리는 헌정곡</div>
     <h2 class="ded-h">마이 웨이 · My Way</h2>
+    <button class="ded-toggle" id="dedToggle" aria-expanded="false">헌정곡 펼쳐 보기 ▾</button>
+    <div class="ded-collapsible" id="dedWrap">
     <div class="ded-body">
       <p>지난해 스승의 날, 마더클럽은 고문님께 노래 한 곡을 바쳤습니다. 프랭크 시내트라의 ‘마이 웨이’. 그 노래를 고르던 날, 우리 마음에 깊이 새겨진 한 장면이 있었습니다.</p>
       <p>2014년, ‘한국 바이올린의 대모’ 故 김남윤 선생님의 정년퇴임 음악회. 모든 연주가 끝난 무대 뒤편으로 제자 백여 명이 조용히 모여 앉아, 선생님을 위해 ‘마이 웨이’를 연주하기 시작했습니다. 영문을 몰라 잠시 어리둥절하시던 선생님은, 끝내 객석을 등지고 서서 손수건으로 눈물을 닦으셨죠.</p>
@@ -296,6 +315,7 @@
       </div>
     </div>
     <div class="ded-close">이 무대를 빌려, 마더클럽이 고문님께 마지막 앙코르를 올립니다.</div>
+    </div>
   </section>
 
   <section class="thought">
@@ -335,9 +355,10 @@
     </div>
 
     <div class="rmb-block">
-      <h2 class="rmb-head">방명록 · 함께 남기는 인사</h2>
-      <p class="rmb-lead">고문님을 기억하는 짧은 인사를 남겨 주세요. 남겨 주신 글은 <b>익명</b>으로 이곳에 함께 모입니다.</p>
+      <h2 class="rmb-head">고문님께 남기는 한마디</h2>
+      <p class="rmb-lead">이 글은 사라지지 않고 이곳에 머물며, 고문님을 그리는 모두가 함께 읽습니다. 떠나보내며 차마 다 하지 못한 한마디를, 여기 남겨 주세요.</p>
       <div class="rmb-card">
+        <input class="rmb-nick" id="gbNick" maxlength="20" placeholder="닉네임 (선택 · 비우면 ‘익명’으로 남겨져요)">
         <textarea class="rmb-ta" id="gbTa" maxlength="500" placeholder="고문님께 남기는 한마디…"></textarea>
         <div class="rmb-row"><span class="rmb-count"><span id="gbCnt">0</span> / 500</span><button class="rmb-btn" id="gbBtn">남기기</button></div>
       </div>
@@ -345,6 +366,8 @@
       <div class="gb-pager" id="gbPager" style="display:none"><button id="gbPrev">‹ 이전</button><span class="gb-pginfo" id="gbPgInfo">1 / 1</span><button id="gbNext">다음 ›</button></div>
     </div>
   </section>
+
+  <a class="fab-write" id="fabWrite" href="#remember">🕯 고문님께 한마디</a>
 
   <footer>
     <p class="foot-quote"><span class="big">&ldquo;책을 쓰려고 목차를 만든 지 10년이 됐는데,<br>아직 손을 못 대고 노인이 됐네요.&rdquo;</span>미처 쓰지 못하신 그 책 대신,<br>고문님이 사랑하신 소리와 그가 남긴 말을 여기 모았습니다.<br>이제, 우리가 듣겠습니다.</p>
@@ -647,7 +670,7 @@ window.addEventListener('load',()=>{const f=document.querySelector('.chapter');i
 </script>
 <script>
 /* ===== 구글 시트 연동: 봉인 편지 & 방명록 ===== */
-const SHEET_API = 'PASTE_APPS_SCRIPT_URL_HERE'; /* ← 배포한 Apps Script 웹앱 /exec URL 을 붙여넣으세요 */
+const SHEET_API = 'https://script.google.com/macros/s/AKfycbxA58hQWiQMhaj3jQQ5C5xY9cZ59MY7_FGimq3wCSIkH_g2A4JKMaZvFMNFcoGhyj0xJA/exec'; /* ← 배포한 Apps Script 웹앱 /exec URL 을 붙여넣으세요 */
 const API_READY = (typeof SHEET_API==='string') && SHEET_API.indexOf('script.google.com')>=0;
 
 function bindCount(taId,cntId){var ta=document.getElementById(taId),c=document.getElementById(cntId);if(!ta||!c)return;ta.addEventListener('input',function(){c.textContent=ta.value.length;});}
@@ -683,8 +706,8 @@ function gbRender(){
   if(GB.page>pages)GB.page=pages; if(GB.page<1)GB.page=1;
   var st=(GB.page-1)*GB.per, slice=GB.entries.slice(st,st+GB.per);
   list.innerHTML=slice.map(function(e){
-    var safe=String(e.text==null?'':e.text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    return '<div class="gb-item"><div class="gb-meta"><span class="no">#'+e.no+'</span> · '+e.ts+'</div><div class="gb-text">'+safe+'</div></div>';
+    var safe=String(e.text==null?'':e.text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); var nm=(e.nick&&String(e.nick).trim())?String(e.nick).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').slice(0,20):'익명';
+    return '<div class="gb-item"><div class="gb-meta"><span class="gb-nick">'+nm+'</span> <span class="no">#'+e.no+'</span> · '+e.ts+'</div><div class="gb-text">'+safe+'</div></div>';
   }).join('');
   document.getElementById('gbPgInfo').textContent=GB.page+' / '+pages;
   document.getElementById('gbPrev').disabled=(GB.page<=1);
@@ -708,8 +731,8 @@ function gbLoad(){
     if(t.length<2){alert('한마디라도 남겨 주세요.');return;}
     if(!API_READY){alert('아직 시트가 연결되지 않았어요.');return;}
     btn.disabled=true; btn.textContent='남기는 중…';
-    postSheet({type:'guestbook',content:t}).then(function(){
-      ta.value=''; document.getElementById('gbCnt').textContent='0';
+    postSheet({type:'guestbook',nick:((document.getElementById('gbNick')||{value:''}).value||'').trim().slice(0,20),content:t}).then(function(){
+      ta.value=''; var _nk=document.getElementById('gbNick'); if(_nk)_nk.value=''; document.getElementById('gbCnt').textContent='0';
       setTimeout(function(){gbLoad(); btn.disabled=false; btn.textContent='남기기';},1300);
     }).catch(function(){alert('잠시 후 다시 시도해 주세요.'); btn.disabled=false; btn.textContent='남기기';});
   });
@@ -719,5 +742,7 @@ function gbLoad(){
   gbLoad();
 })();
 </script>
+<script>(function(){var b=document.getElementById('dedToggle'),w=document.getElementById('dedWrap');if(!b||!w)return;b.addEventListener('click',function(){var open=w.classList.toggle('open');b.setAttribute('aria-expanded',open?'true':'false');b.textContent=open?'헌정곡 접기 ▴':'헌정곡 펼쳐 보기 ▾';});})();</script>
+<script>(function(){var fab=document.getElementById('fabWrite'),sec=document.getElementById('remember');if(!fab||!sec||!('IntersectionObserver' in window))return;new IntersectionObserver(function(es){es.forEach(function(en){fab.classList.toggle('hide',en.isIntersecting);});},{threshold:0.12}).observe(sec);})();</script>
 </body>
 </html>
