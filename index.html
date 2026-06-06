@@ -261,6 +261,11 @@
     .fab-write.hide{opacity:0;visibility:hidden;pointer-events:none}
     html{scroll-behavior:smooth}
     @media(max-width:520px){.fab-write{right:12px;bottom:14px;font-size:.84rem;padding:11px 16px}}
+  
+    .gb-acts{float:right;display:inline-flex;gap:10px}
+    .gb-act{background:none;border:none;color:var(--muted);font-size:.74rem;cursor:pointer;padding:0;font-family:var(--sans);text-decoration:underline}
+    .gb-act:hover{color:var(--gold-bright)}
+    .gb-meta{overflow:hidden}
   </style>
 </head>
 <body>
@@ -340,17 +345,23 @@
 
     <div class="rmb-block">
       <h2 class="rmb-head">고문님께 보내는 편지</h2>
-      <p class="rmb-lead">고문님께 미처 전하지 못한 감사의 마음, 못다 한 이야기를 적어 주세요.<br>이 편지는 <b>익명</b>으로 작성되어 곱게 <b>봉인</b>되며, <b>49재</b>에 고문님께 전해 드립니다.</p>
+      <p class="rmb-lead">고문님께 미처 전하지 못한 감사의 마음, 못다 한 이야기를 적어 주세요.<br>곱게 <b>봉인</b>되어 <b>49재</b>에 고문님께 전해 드립니다.</p>
       <div class="rmb-card" id="letterCard">
-        <span class="rmb-note">익명 · 봉인되어 49재에 전해집니다</span>
+        <span class="rmb-note">봉인되어 49재에 전해집니다</span>
+        <input class="rmb-nick" id="letterNick" maxlength="20" placeholder="닉네임 (선택 · 비우면 ‘익명’)">
+        <input class="rmb-nick" id="letterPin" maxlength="12" placeholder="비밀번호 (이 편지를 수정·삭제할 때 필요해요)">
         <textarea class="rmb-ta" id="letterTa" maxlength="2000" placeholder="고문님께, 그동안 전하지 못한 마음을 여기에 적어 주세요…"></textarea>
         <div class="rmb-row"><span class="rmb-count"><span id="letterCnt">0</span> / 2000</span><button class="rmb-btn" id="letterBtn">봉인하여 보내기</button></div>
       </div>
       <div class="rmb-sealed" id="letterSealed">
         <div class="seal">🕯️</div>
-        <div class="msg">당신의 마음이 곱게 봉인되었습니다.</div>
+        <div class="msg" id="letterSealMsg">당신의 마음이 곱게 봉인되었습니다.</div>
         <div class="sub">49재에, 고문님께 전해 드리겠습니다.</div>
-        <button class="again" id="letterAgain">다른 편지 한 통 더 쓰기</button>
+        <div class="rmb-row" style="justify-content:center;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <button class="again" id="letterEdit">✎ 방금 쓴 편지 고치기</button>
+          <button class="again" id="letterDel">🗑 삭제</button>
+          <button class="again" id="letterAgain">새 편지 쓰기</button>
+        </div>
       </div>
     </div>
 
@@ -359,8 +370,9 @@
       <p class="rmb-lead">이 글은 사라지지 않고 이곳에 머물며, 고문님을 그리는 모두가 함께 읽습니다. 떠나보내며 차마 다 하지 못한 한마디를, 여기 남겨 주세요.</p>
       <div class="rmb-card">
         <input class="rmb-nick" id="gbNick" maxlength="20" placeholder="닉네임 (선택 · 비우면 ‘익명’으로 남겨져요)">
+        <input class="rmb-nick" id="gbPin" maxlength="12" placeholder="비밀번호 (이 글을 수정·삭제할 때 필요해요)">
         <textarea class="rmb-ta" id="gbTa" maxlength="500" placeholder="고문님께 남기는 한마디…"></textarea>
-        <div class="rmb-row"><span class="rmb-count"><span id="gbCnt">0</span> / 500</span><button class="rmb-btn" id="gbBtn">남기기</button></div>
+        <div class="rmb-row"><span class="rmb-count"><span id="gbCnt">0</span> / 500</span><button class="again" id="gbCancel" style="display:none">취소</button><button class="rmb-btn" id="gbBtn">남기기</button></div>
       </div>
       <div class="gb-list" id="gbList"><div class="gb-empty">불러오는 중…</div></div>
       <div class="gb-pager" id="gbPager" style="display:none"><button id="gbPrev">‹ 이전</button><span class="gb-pginfo" id="gbPgInfo">1 / 1</span><button id="gbNext">다음 ›</button></div>
@@ -669,45 +681,68 @@ buildAlbum();
 window.addEventListener('load',()=>{const f=document.querySelector('.chapter');if(f){setTimeout(()=>f.querySelector('.ch-head').click(),700);}});
 </script>
 <script>
-/* ===== 구글 시트 연동: 봉인 편지 & 방명록 ===== */
-const SHEET_API = 'https://script.google.com/macros/s/AKfycbxA58hQWiQMhaj3jQQ5C5xY9cZ59MY7_FGimq3wCSIkH_g2A4JKMaZvFMNFcoGhyj0xJA/exec'; /* ← 배포한 Apps Script 웹앱 /exec URL 을 붙여넣으세요 */
+/* ===== 구글 시트 연동: 봉인 편지 & 한마디 (작성자 비밀번호 + 마스터키는 Apps Script에) ===== */
+const SHEET_API = 'https://script.google.com/macros/s/AKfycbxA58hQWiQMhaj3jQQ5C5xY9cZ59MY7_FGimq3wCSIkH_g2A4JKMaZvFMNFcoGhyj0xJA/exec'; /* ← 배포한 Apps Script 웹앱 /exec URL */
 const API_READY = (typeof SHEET_API==='string') && SHEET_API.indexOf('script.google.com')>=0;
 
 function bindCount(taId,cntId){var ta=document.getElementById(taId),c=document.getElementById(cntId);if(!ta||!c)return;ta.addEventListener('input',function(){c.textContent=ta.value.length;});}
 bindCount('letterTa','letterCnt'); bindCount('gbTa','gbCnt');
 
-function postSheet(payload){
-  return fetch(SHEET_API,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+function postSheet(p){return fetch(SHEET_API,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(p)});}
+function jsonp(params,cb){
+  var name='__cb_'+Math.random().toString(36).slice(2);
+  var q=Object.keys(params).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(params[k]);}).join('&');
+  var sc=document.createElement('script');
+  window[name]=function(d){try{cb(d);}finally{try{delete window[name];}catch(e){} if(sc.parentNode)sc.parentNode.removeChild(sc);}};
+  sc.onerror=function(){try{cb(null);}finally{if(sc.parentNode)sc.parentNode.removeChild(sc);}};
+  sc.src=SHEET_API+'?'+q+'&callback='+name+'&t='+Date.now();
+  document.body.appendChild(sc);
 }
+function rid(){return 'L'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);}
+function esc(x){return String(x==null?'':x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
+/* -------- 봉인 편지 -------- */
 (function(){
   var btn=document.getElementById('letterBtn'),ta=document.getElementById('letterTa'),
+      nick=document.getElementById('letterNick'),pin=document.getElementById('letterPin'),
       card=document.getElementById('letterCard'),sealed=document.getElementById('letterSealed'),
-      again=document.getElementById('letterAgain');
+      again=document.getElementById('letterAgain'),edit=document.getElementById('letterEdit'),del=document.getElementById('letterDel');
   if(!btn)return;
+  var last=null;
+  function v(el){return el?(el.value||'').trim():'';}
   btn.addEventListener('click',function(){
-    var t=(ta.value||'').trim();
+    var t=v(ta), nk=v(nick).slice(0,20), pn=v(pin).slice(0,12);
     if(t.length<2){alert('마음을 한 줄이라도 적어 주세요.');return;}
+    var editing=!!(last&&last.eid);
+    if(!editing&&pn.length<2){alert('이 편지를 수정·삭제할 때 쓸 비밀번호를 정해 주세요. (2자 이상)');if(pin)pin.focus();return;}
     if(!API_READY){alert('아직 시트가 연결되지 않았어요. (관리자: Apps Script URL을 넣어 주세요)');return;}
-    btn.disabled=true; btn.textContent='봉인하는 중…';
-    postSheet({type:'letter',content:t}).then(function(){
-      card.style.display='none'; sealed.style.display='block'; ta.value=''; document.getElementById('letterCnt').textContent='0';
-    }).catch(function(){alert('잠시 후 다시 시도해 주세요.');}).then(function(){btn.disabled=false; btn.textContent='봉인하여 보내기';});
+    btn.disabled=true; btn.textContent=editing?'수정하는 중…':'봉인하는 중…';
+    var eid=editing?last.eid:rid();
+    var payload=editing?{type:'letter',action:'edit',eid:eid,pin:last.pin,nick:nk,content:t}:{type:'letter',eid:eid,nick:nk,pin:pn,content:t};
+    postSheet(payload).then(function(){
+      last={eid:eid,nick:nk,pin:editing?last.pin:pn,content:t};
+      card.style.display='none'; sealed.style.display='block';
+      var m=document.getElementById('letterSealMsg'); if(m)m.textContent=editing?'편지를 고쳐 다시 봉인했습니다.':'당신의 마음이 곱게 봉인되었습니다.';
+      btn.textContent='봉인하여 보내기';
+    }).catch(function(){alert('잠시 후 다시 시도해 주세요.');}).then(function(){btn.disabled=false;});
   });
-  if(again)again.addEventListener('click',function(){sealed.style.display='none'; card.style.display='block';});
+  if(again)again.addEventListener('click',function(){last=null; ta.value=''; if(nick)nick.value=''; if(pin)pin.value=''; document.getElementById('letterCnt').textContent='0'; sealed.style.display='none'; card.style.display='block'; btn.textContent='봉인하여 보내기';});
+  if(edit)edit.addEventListener('click',function(){if(!last)return; ta.value=last.content; if(nick)nick.value=last.nick||''; if(pin)pin.value=last.pin||''; document.getElementById('letterCnt').textContent=String(last.content.length); sealed.style.display='none'; card.style.display='block'; btn.textContent='수정하여 다시 봉인';});
+  if(del)del.addEventListener('click',function(){if(!last){sealed.style.display='none';card.style.display='block';return;} if(!confirm('방금 봉인한 편지를 삭제할까요?'))return; postSheet({type:'letter',action:'delete',eid:last.eid,pin:last.pin}); last=null; ta.value=''; if(nick)nick.value=''; if(pin)pin.value=''; document.getElementById('letterCnt').textContent='0'; sealed.style.display='none'; card.style.display='block'; btn.textContent='봉인하여 보내기'; alert('삭제했습니다.');});
 })();
 
-var GB={entries:[],page:1,per:5};
+/* -------- 한마디(공개) -------- */
+var GB={entries:[],page:1,per:5,editNo:null};
 function gbRender(){
   var list=document.getElementById('gbList'),pager=document.getElementById('gbPager');
   if(!list)return;
-  if(!GB.entries.length){list.innerHTML='<div class="gb-empty">아직 남겨진 인사가 없어요. 첫 인사를 남겨 주세요.</div>'; if(pager)pager.style.display='none'; return;}
+  if(!GB.entries.length){list.innerHTML='<div class="gb-empty">아직 남겨진 한마디가 없어요. 첫 한마디를 남겨 주세요.</div>'; if(pager)pager.style.display='none'; return;}
   var pages=Math.ceil(GB.entries.length/GB.per);
   if(GB.page>pages)GB.page=pages; if(GB.page<1)GB.page=1;
   var st=(GB.page-1)*GB.per, slice=GB.entries.slice(st,st+GB.per);
   list.innerHTML=slice.map(function(e){
-    var safe=String(e.text==null?'':e.text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); var nm=(e.nick&&String(e.nick).trim())?String(e.nick).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').slice(0,20):'익명';
-    return '<div class="gb-item"><div class="gb-meta"><span class="gb-nick">'+nm+'</span> <span class="no">#'+e.no+'</span> · '+e.ts+'</div><div class="gb-text">'+safe+'</div></div>';
+    var nm=(e.nick&&String(e.nick).trim())?esc(e.nick).slice(0,20):'익명';
+    return '<div class="gb-item"><div class="gb-meta"><span class="gb-nick">'+nm+'</span> <span class="no">#'+e.no+'</span> · '+esc(e.ts)+'<span class="gb-acts"><button class="gb-act" data-act="edit" data-no="'+e.no+'">수정</button><button class="gb-act" data-act="del" data-no="'+e.no+'">삭제</button></span></div><div class="gb-text">'+esc(e.text)+'</div></div>';
   }).join('');
   document.getElementById('gbPgInfo').textContent=GB.page+' / '+pages;
   document.getElementById('gbPrev').disabled=(GB.page<=1);
@@ -716,29 +751,48 @@ function gbRender(){
 }
 function gbLoad(){
   var l=document.getElementById('gbList');
-  if(!API_READY){if(l)l.innerHTML='<div class="gb-empty">방명록 준비 중입니다.</div>';return;}
-  var cb='__gbcb_'+Date.now();
-  var sc=document.createElement('script');
-  window[cb]=function(data){GB.entries=(data&&data.entries)?data.entries:[]; GB.page=1; gbRender(); try{delete window[cb];}catch(e){} if(sc.parentNode)sc.parentNode.removeChild(sc);};
-  sc.src=SHEET_API+'?callback='+cb+'&t='+Date.now();
-  sc.onerror=function(){if(l)l.innerHTML='<div class="gb-empty">불러오지 못했어요. 잠시 후 새로고침해 주세요.</div>';};
-  document.body.appendChild(sc);
+  if(!API_READY){if(l)l.innerHTML='<div class="gb-empty">한마디 준비 중입니다.</div>';return;}
+  jsonp({action:'list'},function(d){GB.entries=(d&&d.entries)?d.entries:[]; gbRender();});
 }
 (function(){
-  var btn=document.getElementById('gbBtn'),ta=document.getElementById('gbTa');
+  var btn=document.getElementById('gbBtn'),ta=document.getElementById('gbTa'),
+      nick=document.getElementById('gbNick'),pin=document.getElementById('gbPin'),cancel=document.getElementById('gbCancel');
+  function v(el){return el?(el.value||'').trim():'';}
+  function reset(){GB.editNo=null; ta.value=''; if(pin)pin.value=''; document.getElementById('gbCnt').textContent='0'; btn.textContent='남기기'; if(cancel)cancel.style.display='none';}
   if(btn)btn.addEventListener('click',function(){
-    var t=(ta.value||'').trim();
+    var t=v(ta), nk=v(nick).slice(0,20), pn=v(pin).slice(0,12);
     if(t.length<2){alert('한마디라도 남겨 주세요.');return;}
     if(!API_READY){alert('아직 시트가 연결되지 않았어요.');return;}
+    if(GB.editNo!=null){
+      if(pn.length<1){alert('비밀번호를 입력해 주세요.');return;}
+      btn.disabled=true; btn.textContent='수정 중…';
+      jsonp({action:'edit',no:GB.editNo,pin:pn,nick:nk,content:t},function(d){btn.disabled=false; if(d&&d.ok){reset(); gbLoad();} else {alert((d&&d.error)?d.error:'비밀번호가 일치하지 않습니다.'); btn.textContent='수정 저장';}});
+      return;
+    }
+    if(pn.length<2){alert('이 글을 수정·삭제할 때 쓸 비밀번호를 정해 주세요. (2자 이상)');if(pin)pin.focus();return;}
     btn.disabled=true; btn.textContent='남기는 중…';
-    postSheet({type:'guestbook',nick:((document.getElementById('gbNick')||{value:''}).value||'').trim().slice(0,20),content:t}).then(function(){
-      ta.value=''; var _nk=document.getElementById('gbNick'); if(_nk)_nk.value=''; document.getElementById('gbCnt').textContent='0';
-      setTimeout(function(){gbLoad(); btn.disabled=false; btn.textContent='남기기';},1300);
-    }).catch(function(){alert('잠시 후 다시 시도해 주세요.'); btn.disabled=false; btn.textContent='남기기';});
+    postSheet({type:'guestbook',nick:nk,pin:pn,content:t}).then(function(){ta.value=''; if(pin)pin.value=''; document.getElementById('gbCnt').textContent='0'; setTimeout(function(){gbLoad(); btn.disabled=false; btn.textContent='남기기';},1300);}).catch(function(){alert('잠시 후 다시 시도해 주세요.'); btn.disabled=false; btn.textContent='남기기';});
   });
+  if(cancel)cancel.addEventListener('click',function(){reset();});
   var prev=document.getElementById('gbPrev'),next=document.getElementById('gbNext');
   if(prev)prev.addEventListener('click',function(){GB.page--; gbRender();});
   if(next)next.addEventListener('click',function(){GB.page++; gbRender();});
+  var list=document.getElementById('gbList');
+  if(list)list.addEventListener('click',function(ev){
+    var b=ev.target&&ev.target.closest?ev.target.closest('.gb-act'):null; if(!b)return;
+    var no=b.getAttribute('data-no'), act=b.getAttribute('data-act'), entry=null;
+    for(var i=0;i<GB.entries.length;i++){if(String(GB.entries[i].no)===String(no)){entry=GB.entries[i];break;}}
+    if(act==='del'){
+      var p=prompt('이 한마디를 삭제하려면 비밀번호를 입력하세요.'); if(p==null)return; p=p.trim(); if(!p)return;
+      jsonp({action:'del',no:no,pin:p},function(d){if(d&&d.ok){gbLoad();} else {alert((d&&d.error)?d.error:'비밀번호가 일치하지 않습니다.');}});
+    } else {
+      var p2=prompt('이 한마디를 수정하려면 비밀번호를 입력하세요.'); if(p2==null)return; p2=p2.trim(); if(!p2)return;
+      GB.editNo=no; ta.value=entry?entry.text:''; if(nick)nick.value=entry?(entry.nick||''):''; if(pin)pin.value=p2;
+      document.getElementById('gbCnt').textContent=String((ta.value||'').length);
+      btn.textContent='수정 저장'; if(cancel)cancel.style.display='inline-block';
+      ta.scrollIntoView({behavior:'smooth',block:'center'}); ta.focus();
+    }
+  });
   gbLoad();
 })();
 </script>
