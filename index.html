@@ -277,6 +277,7 @@
     .gb-star{color:var(--muted)}
     .gb-star.on{color:var(--gold-bright)}
       .gb-pager{gap:10px;flex-wrap:wrap}
+      .gb-bunstar{color:var(--gold)}
   </style>
 </head>
 <body>
@@ -696,7 +697,8 @@ window.addEventListener('load',()=>{const f=document.querySelector('.chapter');i
 /* ===== 구글 시트 연동: 봉인 편지 & 한마디 (작성자 비밀번호 + 마스터키는 Apps Script에) ===== */
 const SHEET_API = 'https://script.google.com/macros/s/AKfycbxA58hQWiQMhaj3jQQ5C5xY9cZ59MY7_FGimq3wCSIkH_g2A4JKMaZvFMNFcoGhyj0xJA/exec'; /* ← 배포한 Apps Script 웹앱 /exec URL */
 const API_READY = (typeof SHEET_API==='string') && SHEET_API.indexOf('script.google.com')>=0;
-var MC_ADMIN=(function(){try{var u=new URLSearchParams(location.search);var a=u.get('admin');if(a==='1')localStorage.setItem('mc_admin','1');else if(a==='0')localStorage.removeItem('mc_admin');return localStorage.getItem('mc_admin')==='1';}catch(e){return false;}})();
+var MC_ADMIN=(function(){var on=false;try{var u=new URLSearchParams(location.search);var a=u.get('admin');if(a==='1'){on=true;try{localStorage.setItem('mc_admin','1');}catch(e){}}else if(a==='0'){try{localStorage.removeItem('mc_admin');}catch(e){}return false;}}catch(e){}if(!on){try{on=(localStorage.getItem('mc_admin')==='1');}catch(e){}}return on;})();
+if(MC_ADMIN){var _mcBadge=function(){try{if(document.getElementById('mcAdminBadge'))return;var d=document.createElement('div');d.id='mcAdminBadge';d.innerHTML='\uD83D\uDD27 \uAD00\uB9AC\uC790 \uBAA8\uB4DC <a href="?admin=0" style="color:#15110c;text-decoration:underline;margin-left:6px">\uB044\uAE30</a>';d.style.cssText='position:fixed;top:8px;left:8px;z-index:99999;background:#c9a25b;color:#15110c;font:600 12px/1 sans-serif;padding:7px 10px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.45)';document.body.appendChild(d);}catch(e){}};if(document.body){_mcBadge();}else{window.addEventListener('DOMContentLoaded',_mcBadge);}}
 
 function bindCount(taId,cntId){var ta=document.getElementById(taId),c=document.getElementById(cntId);if(!ta||!c)return;ta.addEventListener('input',function(){c.textContent=ta.value.length;});}
 bindCount('letterTa','letterCnt'); bindCount('gbTa','gbCnt');
@@ -746,7 +748,7 @@ function esc(x){return String(x==null?'':x).replace(/&/g,'&amp;').replace(/</g,'
 
 /* -------- 한마디(공개) -------- */
 var GB={entries:[],page:1,per:5,editNo:null};
-function gbRenderBest(){var box=document.getElementById('gbBest');if(!box)return;var bs=GB.entries.filter(function(e){return e.best;});if(!bs.length){box.style.display='none';box.innerHTML='';return;}box.style.display='block';box.innerHTML='<div class="gb-best-h">⭐ 마음에 남는 한마디</div>'+bs.map(function(e){var nm=(e.nick&&String(e.nick).trim())?esc(e.nick).slice(0,20):'익명';return '<div class="gb-bitem"><div class="gb-btext">'+esc(e.text)+'</div><div class="gb-bby">— '+nm+'</div></div>';}).join('');}
+function gbRenderBest(){var box=document.getElementById('gbBest');if(!box)return;var bs=GB.entries.filter(function(e){return e.best;});if(!bs.length){box.style.display='none';box.innerHTML='';return;}box.style.display='block';box.innerHTML='<div class="gb-best-h">⭐ 마음에 남는 한마디</div>'+bs.map(function(e){var nm=(e.nick&&String(e.nick).trim())?esc(e.nick).slice(0,20):'익명';return '<div class="gb-bitem"><div class="gb-btext">'+esc(e.text)+'</div><div class="gb-bby">— '+nm+(MC_ADMIN?(' <button class="gb-act gb-bunstar" data-no="'+e.no+'">내리기 ✕</button>'):'')+'</div></div>';}).join('');}
 function gbRender(){
   var list=document.getElementById('gbList'),pager=document.getElementById('gbPager');
   if(!list)return;
@@ -801,6 +803,8 @@ function gbLoad(){
   var first=document.getElementById('gbFirst'),last=document.getElementById('gbLast');
   if(first)first.addEventListener('click',function(){GB.page=1; gbRender();});
   if(last)last.addEventListener('click',function(){GB.page=1e9; gbRender();});
+  var bestBox=document.getElementById('gbBest');
+  if(bestBox)bestBox.addEventListener('click',function(ev){var b=ev.target&&ev.target.closest?ev.target.closest('.gb-bunstar'):null;if(!b)return;var no=b.getAttribute('data-no');var pb=prompt('이 글을 ‘마음에 남는 한마디’에서 내리려면 관리자 비밀번호를 입력하세요.');if(pb==null)return;pb=pb.trim();if(!pb)return;jsonp({action:'best',no:no,pin:pb,val:'0'},function(d){if(d&&d.ok){gbLoad();}else{alert((d&&d.error)?d.error:'관리자 비밀번호가 아닙니다.');}});});
   var list=document.getElementById('gbList');
   if(list)list.addEventListener('click',function(ev){
     var b=ev.target&&ev.target.closest?ev.target.closest('.gb-act'):null; if(!b)return;
