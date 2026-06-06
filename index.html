@@ -276,6 +276,7 @@
     .gb-item.best{border-left-color:var(--gold-bright);background:rgba(201,162,91,0.06)}
     .gb-star{color:var(--muted)}
     .gb-star.on{color:var(--gold-bright)}
+      .gb-pager{gap:10px;flex-wrap:wrap}
   </style>
 </head>
 <body>
@@ -386,7 +387,7 @@
         <div class="rmb-row"><span class="rmb-count"><span id="gbCnt">0</span> / 1000</span><button class="again" id="gbCancel" style="display:none">취소</button><button class="rmb-btn" id="gbBtn">남기기</button></div>
       </div>
       <div class="gb-list" id="gbList"><div class="gb-empty">불러오는 중…</div></div>
-      <div class="gb-pager" id="gbPager" style="display:none"><button id="gbPrev">‹ 이전</button><span class="gb-pginfo" id="gbPgInfo">1 / 1</span><button id="gbNext">다음 ›</button></div>
+      <div class="gb-pager" id="gbPager" style="display:none"><button id="gbFirst">« 처음</button><button id="gbPrev">‹ 이전</button><span class="gb-pginfo" id="gbPgInfo">1 / 1</span><button id="gbNext">다음 ›</button><button id="gbLast">마지막 »</button></div>
     </div>
   </section>
 
@@ -695,6 +696,7 @@ window.addEventListener('load',()=>{const f=document.querySelector('.chapter');i
 /* ===== 구글 시트 연동: 봉인 편지 & 한마디 (작성자 비밀번호 + 마스터키는 Apps Script에) ===== */
 const SHEET_API = 'https://script.google.com/macros/s/AKfycbxA58hQWiQMhaj3jQQ5C5xY9cZ59MY7_FGimq3wCSIkH_g2A4JKMaZvFMNFcoGhyj0xJA/exec'; /* ← 배포한 Apps Script 웹앱 /exec URL */
 const API_READY = (typeof SHEET_API==='string') && SHEET_API.indexOf('script.google.com')>=0;
+var MC_ADMIN=(function(){try{var u=new URLSearchParams(location.search);var a=u.get('admin');if(a==='1')localStorage.setItem('mc_admin','1');else if(a==='0')localStorage.removeItem('mc_admin');return localStorage.getItem('mc_admin')==='1';}catch(e){return false;}})();
 
 function bindCount(taId,cntId){var ta=document.getElementById(taId),c=document.getElementById(cntId);if(!ta||!c)return;ta.addEventListener('input',function(){c.textContent=ta.value.length;});}
 bindCount('letterTa','letterCnt'); bindCount('gbTa','gbCnt');
@@ -755,11 +757,13 @@ function gbRender(){
   var st=(GB.page-1)*GB.per, slice=GB.entries.slice(st,st+GB.per);
   list.innerHTML=slice.map(function(e){
     var nm=(e.nick&&String(e.nick).trim())?esc(e.nick).slice(0,20):'익명';
-    return '<div class="gb-item'+(e.best?' best':'')+'"><div class="gb-meta"><span class="gb-nick">'+nm+'</span> <span class="no">#'+e.no+'</span> · '+esc(fmtTs(e.ts))+'<span class="gb-acts"><button class="gb-act gb-star'+(e.best?' on':'')+'" data-act="best" data-no="'+e.no+'" data-best="'+(e.best?'1':'0')+'">'+(e.best?'★':'☆')+'</button><button class="gb-act" data-act="edit" data-no="'+e.no+'">수정</button><button class="gb-act" data-act="del" data-no="'+e.no+'">삭제</button></span></div><div class="gb-text">'+esc(e.text)+'</div></div>';
+    return '<div class="gb-item'+(e.best?' best':'')+'"><div class="gb-meta"><span class="gb-nick">'+nm+'</span> <span class="no">#'+e.no+'</span> · '+esc(fmtTs(e.ts))+'<span class="gb-acts">'+(MC_ADMIN?('<button class="gb-act gb-star'+(e.best?' on':'')+'" data-act="best" data-no="'+e.no+'" data-best="'+(e.best?'1':'0')+'">'+(e.best?'★':'☆')+'</button>'):'')+'<button class="gb-act" data-act="edit" data-no="'+e.no+'">수정</button><button class="gb-act" data-act="del" data-no="'+e.no+'">삭제</button></span></div><div class="gb-text">'+esc(e.text)+'</div></div>';
   }).join('');
   document.getElementById('gbPgInfo').textContent=GB.page+' / '+pages;
   document.getElementById('gbPrev').disabled=(GB.page<=1);
   document.getElementById('gbNext').disabled=(GB.page>=pages);
+  var _fb=document.getElementById('gbFirst'),_lb=document.getElementById('gbLast');
+  if(_fb)_fb.disabled=(GB.page<=1); if(_lb)_lb.disabled=(GB.page>=pages);
   pager.style.display=(pages>1)?'flex':'none';
 }
 function gbLoad(){
@@ -794,6 +798,9 @@ function gbLoad(){
   var prev=document.getElementById('gbPrev'),next=document.getElementById('gbNext');
   if(prev)prev.addEventListener('click',function(){GB.page--; gbRender();});
   if(next)next.addEventListener('click',function(){GB.page++; gbRender();});
+  var first=document.getElementById('gbFirst'),last=document.getElementById('gbLast');
+  if(first)first.addEventListener('click',function(){GB.page=1; gbRender();});
+  if(last)last.addEventListener('click',function(){GB.page=1e9; gbRender();});
   var list=document.getElementById('gbList');
   if(list)list.addEventListener('click',function(ev){
     var b=ev.target&&ev.target.closest?ev.target.closest('.gb-act'):null; if(!b)return;
