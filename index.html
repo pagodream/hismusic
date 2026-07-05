@@ -168,6 +168,7 @@
   .t-sub{font-size:12px;color:var(--muted);margin-top:3px;font-weight:300}
   .track.active .t-title{color:var(--gold-bright)}
   .rec-badge{display:inline-block;font-size:10.5px;font-weight:500;color:#14110c;background:linear-gradient(135deg,var(--gold-bright),var(--gold));padding:1.5px 8px;border-radius:100px;margin-left:8px;letter-spacing:.02em;vertical-align:middle;white-space:nowrap;box-shadow:0 1px 6px rgba(201,162,91,.35)}
+  .t-lyrics{display:inline-block;margin-top:7px;font-family:var(--sans);font-size:12px;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
   .voice{font-family:var(--serif-ko);font-size:13px;color:var(--cream-dim);line-height:1.85;margin-top:10px;padding:11px 13px;border-left:2px solid var(--gold-deep);background:rgba(201,162,91,0.05);border-radius:0 8px 8px 0}
   .voice .v-by{display:block;font-size:11px;color:var(--muted);letter-spacing:.08em;margin-top:7px}
   .voice .spoiler{margin-top:16px;border-top:1px dashed var(--line);padding-top:14px}
@@ -665,14 +666,14 @@ const ALBUM = [
     num:"VII", era:"2009 – 2015", latin:"f(x)", ko:"에프엑스",
     quote:"고문님은 f(x)의 가사를 아주 높이 평가하셨습니다.",
     tracks:[
-      {t:"라차타 (LA chA TA)", s:"f(x) · 2009 · 데뷔곡", id:"H7MHZpSNJQc", rec:true},
-      {t:"NU 예삐오 (NU ABO)", s:"f(x) · 2010 · Official M/V", id:"E8ZrPFMr_nY"},
-      {t:"피노키오 (Danger)", s:"f(x) · 2011 · Official M/V", id:"kKS12iGFyEA"},
-      {t:"Hot Summer", s:"f(x) · 2011 · Official M/V", id:"z-rftpZ7kCY"},
-      {t:"Electric Shock", s:"f(x) · 2012 · Official M/V", id:"n8I8QGFA1oM"},
-      {t:"첫 사랑니 (Rum Pum Pum Pum)", s:"f(x) · 2013 · Official M/V", id:"xnku4o3tRB4"},
-      {t:"빨간 구두 (Red Light)", s:"f(x) · 2014 · Official M/V", id:"iv-8-EgPEY0"},
-      {t:"4 Walls", s:"f(x) · 2015 · Official M/V", id:"4j7Umwfx60Q"},
+      {t:"라차타 (LA chA TA)", s:"f(x) · 2009 · 데뷔곡", id:"H7MHZpSNJQc", lyricsQ:"에프엑스 라차타 가사"},
+      {t:"NU 예삐오 (NU ABO)", s:"f(x) · 2010 · Official M/V", id:"E8ZrPFMr_nY", lyricsQ:"에프엑스 NU ABO 가사"},
+      {t:"피노키오 (Danger)", s:"f(x) · 2011 · Official M/V", id:"kKS12iGFyEA", lyricsQ:"에프엑스 피노키오 Danger 가사"},
+      {t:"Hot Summer", s:"f(x) · 2011 · Official M/V", id:"z-rftpZ7kCY", lyricsQ:"에프엑스 Hot Summer 가사"},
+      {t:"Electric Shock", s:"f(x) · 2012 · Official M/V", id:"n8I8QGFA1oM", lyricsQ:"에프엑스 Electric Shock 가사"},
+      {t:"첫 사랑니 (Rum Pum Pum Pum)", s:"f(x) · 2013 · Official M/V", id:"xnku4o3tRB4", lyricsQ:"에프엑스 첫 사랑니 가사"},
+      {t:"Red Light", s:"f(x) · 2014 · Official M/V", id:"iv-8-EgPEY0", lyricsQ:"에프엑스 Red Light 가사"},
+      {t:"4 Walls", s:"f(x) · 2015 · Official M/V", id:"4j7Umwfx60Q", lyricsQ:"에프엑스 4 Walls 가사"},
     ]
   }
 ];
@@ -694,9 +695,10 @@ function buildAlbum(){
     ch.tracks.forEach((tr)=>{
       const badge=tr.rec?'<span class="rec-badge">★ 고문님 추천</span>':'';
       const voice=tr.voice?'<div class="voice">'+tr.voice+'<span class="v-by">— 故 이재훈 고문님</span></div>':'';
+      const lyr=tr.lyricsQ?'<a class="t-lyrics" href="https://search.naver.com/search.naver?query='+encodeURIComponent(tr.lyricsQ)+'" target="_blank" rel="noopener">가사 보기 ↗</a>':'';
       tracksHTML+='<div class="track" data-id="'+tr.id+'"'+(tr.start?' data-start="'+tr.start+'"':'')+'>'+
         '<div class="t-media">'+thumbHTML(tr.id)+'</div>'+
-        '<div class="t-info"><div class="t-title">'+tr.t+badge+'</div><div class="t-sub">'+tr.s+'</div>'+voice+
+        '<div class="t-info"><div class="t-title">'+tr.t+badge+'</div><div class="t-sub">'+tr.s+'</div>'+lyr+voice+
         '<div class="eq"><span></span><span></span><span></span><span></span></div></div></div>'+
         '<div class="player-slot"></div>';
     });
